@@ -1,0 +1,41 @@
+.cardEspecie {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+   justify-content: space-between ;
+    padding: 15px;
+    background-color: var(--fondoBlanco);
+    border-radius: 20px;
+    border-color: 1px solid var(--contorno);
+}
+
+.cardEspecieTitulo{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+   
+}
+.contentValue{
+    
+    
+}
+.EspecieTitle{
+    margin: 0;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--colorTitle);
+}
+.cardEspecieValue{
+    padding: 0;
+    margin: 0;
+    font-size: 70px;
+    font-weight: 700;
+    color: var(--colorTitle);
+}
+
+.Icono{
+    width: 23px;
+}
