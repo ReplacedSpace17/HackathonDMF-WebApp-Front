@@ -1,0 +1,14 @@
+.aside-container{
+    width: 30vw;
+    height: 100vh;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    background-color: var(--blancoGris);
+}
+
+.logoLogin{
+width: 50%;
+}
