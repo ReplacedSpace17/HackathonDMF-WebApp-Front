@@ -1,14 +1,110 @@
-.aside-container{
+.aside-container {
+    user-select: none;
     width: 30vw;
     height: 100vh;
     max-width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     background-color: var(--blancoGris);
+
+
 }
 
-.logoLogin{
-width: 50%;
+.logoLogin {
+    width: 50%;
 }
+
+.parrafo {
+    color: rgb(19, 19, 19);
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.containerTitulo {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 80%;
+    max-width: 250px;
+    
+}
+
+.line {
+    width: 50%;
+    height: 1px;
+    background-color: #949494af;
+}
+
+.TITLE-Login {
+    width: 100%;
+    align-content: center;
+    text-align: center;
+    font-size: 15px;
+    color: #1F3139;
+    font-weight: 500;
+}
+
+.inputLogin {
+    width: 80%;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid #c9c9c9;
+    margin: 10px 0px;
+    padding: 0px 8px;
+    font-size: 14px;
+    color: #1F1F1F;
+    font-weight: 300;
+    background-color: transparent;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    max-width: 250px;
+    
+}
+
+.inputLogin:focus {
+    background-color: white;
+    border: 1px solid #6AA33D;
+    color: #202020;
+}
+
+.containerCrearCuenta{
+    display: flex;
+    flex-direction: row;
+}
+.RegistrateAqui{
+    color: #6AA33D;
+    font-size: 13px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.buttonLogin{
+    
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0px;
+    padding: 0px 8px;
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+    background-color: #1F3139;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    cursor: pointer;
+    max-width: 260px;
+}
+.buttonLogin:hover{
+background-color: #6AA33D;
+}
+.buttonLogin:active{
+    scale: 0.94;
+    }
