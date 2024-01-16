@@ -15,10 +15,13 @@ function Login() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/Login');
+    navigate('/Home');
   }
   const handleCreateCuenta = () => {
     navigate('/Account');
+  }
+  const handleHome = () => {
+    navigate('/Home');
   }
   
   return (

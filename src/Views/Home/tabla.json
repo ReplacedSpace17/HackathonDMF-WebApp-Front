@@ -1,0 +1,32 @@
+[
+    {
+        "ID": 1,
+        "Nombre": "Chlorella vulgaris",
+        "Origen": "Adquirida",
+        "Medio": "Dulce"
+    },
+    {
+        "ID": 2,
+        "Nombre": "Spirullina vulgaris",
+        "Origen": "Adquirida",
+        "Medio": "Dulce"
+    },
+    {
+        "ID": 3,
+        "Nombre": "ChloreNannochlopi vulgaris",
+        "Origen": "Adquirida",
+        "Medio": "Salado"
+    },
+    {
+        "ID": 4,
+        "Nombre": "Isochrych vulgaris",
+        "Origen": "Adquirida",
+        "Medio": "Dulce"
+    },
+    {
+        "ID": 5,
+        "Nombre": "Chlorella vulgaris",
+        "Origen": "Adquirida",
+        "Medio": "Dulce"
+    }
+]
