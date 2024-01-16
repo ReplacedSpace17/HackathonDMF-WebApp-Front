@@ -1,8 +1,9 @@
 .bodyHome{
-    width: calc(100%);
-    height: calc(100%);
+    width: 700px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+ 
 }

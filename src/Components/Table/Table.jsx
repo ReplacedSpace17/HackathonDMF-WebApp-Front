@@ -3,27 +3,33 @@ import './table.css';
 
 function Table({ data }) {
     return (
-        <div className="containerTable">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Origen</th>
-                        <th>Medio</th>
+        <div className="containerCardTable">
+            <div className="elementsTopContainer">
+                <h1 className='TitleTable'>Mis cepas</h1>
+                <input type="text" placeholder="Buscar" className="inputSearch"/>
+            </div>
+            <div className="containerTable">
+            <table className='tableT1'>
+                <thead className='theadT1'>
+                    <tr className='trT1'>
+                        <th className='thT1'>ID</th>
+                        <th className='thT1'>Nombre</th>
+                        <th className='thT1'>Origen</th>
+                        <th className='thT1'>Medio</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((item) => (
-                        <tr key={item.ID}>
-                            <td>{item.ID}</td>
-                            <td>{item.Nombre}</td>
-                            <td>{item.Origen}</td>
-                            <td>{item.Medio}</td>
+                        <tr className='trT1' key={item.ID}>
+                            <td className='tdT1'>{item.ID}</td>
+                            <td className='tdT1'>{item.Nombre}</td>
+                            <td className='tdT1'>{item.Origen}</td>
+                            <td className='tdT1'>{item.Medio}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 }

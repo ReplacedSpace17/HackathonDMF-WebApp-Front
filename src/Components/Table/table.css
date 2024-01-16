@@ -1,27 +1,92 @@
-.containerTable {
-    margin: 20px;
+.containerCardTable{
+    width: 100%;
+    height: 100%;
+   background-color: #ffffff;
+   border-radius: 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+    align-items: center;
+    
+   
 }
 
-table {
+.elementsTopContainer{
+    margin-top: 10px;
+    width: 93%;
+    height: auto;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.TitleTable{
+    font-family: "Nokora", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+    font-size: 18px;
+    color: #1F3139;
+
+}
+
+.inputSearch{
+width: 200px;
+height: 18px;
+font-size: 18px;
+color: #1F3139;
+background-color: white;
+border: 1px solid rgb(26, 26, 26);
+border-radius: 5px;
+}
+
+.containerTable {
+    width: 95%;
+    max-height: 80%;
+    overflow-y: auto;
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.tableT1 {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
+    color: #373737;
+    background-color: #E9FBE8;
+    font-size: 15px;
 }
 
-th, td {
-    border: 1px solid #e05c5c;
+.thT1,
+.tdT1 {
     padding: 8px;
     text-align: left;
 }
 
-th {
+.thT1 {
     background-color: #095e2c;
 }
 
-tr:nth-child(even) {
-    background-color: #3f0718;
+.trT1 {
+    overflow: hidden;
+    border: 5px solid #ffffff;
 }
 
-tr:hover {
-    background-color: #1a1a1a;
+.trT1:nth-child(even) {
+    background-color: #c3eec1;
+}
+
+.trT1:hover {
+    /* Agrega cualquier estilo adicional que desees para el hover */
+}
+
+/* Aplicar border radius solo a los extremos de las filas */
+.trT1:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.trT1:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
