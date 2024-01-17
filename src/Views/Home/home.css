@@ -1,9 +1,124 @@
 .bodyHome{
-    width: 700px;
-    height: 500px;
+    background-color: aliceblue;
+    width: calc(100% );
+    height: calc(100% );
+    display: flex;
+    flex-direction: row;
+   
+ 
+}
+
+/*Menu*/
+.navHome{
+    height: 100vh;
+    width: 20%;
+    min-width: 250px;
+    max-width: 300px;
+    background-color: aqua;
+}
+
+/*Main*/
+.mainHome{
+    height: 100vh;
+    width: 100%;
+background-color: rgb(26, 26, 26);
+display: flex;
+flex-direction: column;
+
+}
+
+.headerHome{
+    background-color: royalblue;
+    height: 10vh;
+    min-height: 80px;
+}
+
+.ContentHome{
+    background-color: rosybrown;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+/*Sections 1*/
+.section1{
+    background-color: seagreen;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
- 
+    padding-left: 3rem;
+}
+
+.sectionsCards{
+    width: 100%;
+    height: auto;
+    background-color: rgb(37, 25, 25);
+    display: flex;
+    flex-direction: row;
+}
+
+/*card*/
+.Card1{
+    margin: 0.3rem;
+    background-color: rgb(7, 16, 43);
+    width: 250px;
+    height: 150px;
+    min-width: 160px;
+    min-height: 120px;
+}
+
+.sectionsTable{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rosybrown;
+  
+    
+}
+.contentTable1{
+    margin-top: 1em;
+    width: 95.5%;
+    height: 20%;
+    min-width: 600px;
+    min-height: 300px;
+    background-color: royalblue;
+}
+.contentTable2{
+    margin-top: 1em;
+    width: 95.5%;
+    height: 20%;
+    min-width: 600px;
+    min-height: 300px;
+    background-color: rgb(7, 16, 43);
+}
+/*Sections 2*/
+.section2{
+    width: 40%;
+    background-color: rgb(8, 11, 10);
+}
+
+
+/*Responsive*/
+@media screen and (max-width: 1150px) {
+    .section1{
+        padding: 0;
+    }
+}
+@media screen and (max-width: 900px) {
+
+    .ContentHome{
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .section1, .section2{
+        width: 100%;
+        padding: 0;
+    }
+    .sectionsCards{
+        flex-direction: column;
+        align-items: center;
+    }
+    
 }
