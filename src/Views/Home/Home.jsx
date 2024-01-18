@@ -1,6 +1,7 @@
 import './home.css'
 import Table from '../../Components/Table/Table.jsx'
 import datos from './tabla.json'
+import Menu from '../../Components/Menu/Menu.jsx'
 
 function Home() {
 
