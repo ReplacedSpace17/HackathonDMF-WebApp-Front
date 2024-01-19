@@ -10,7 +10,7 @@ function Home() {
     return (
         <body className='bodyHome'>
             <nav className='navHome'>
-                <h1>dfsf</h1>
+                <Menu/>
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
