@@ -2,6 +2,9 @@ import './home.css'
 import Table from '../../Components/Table/Table.jsx'
 import datos from './tabla.json'
 import Menu from '../../Components/Menu/Menu.jsx'
+import Header from '../../Components/Header/Header.jsx'
+import foto from '../../assets/img.png'
+import CardEspecie from '../../Components/CardsInfo/cardEspecie'
 
 function Home() {
 
@@ -14,16 +17,25 @@ function Home() {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-                    <h1>header</h1>
+                    <Header 
+                    titulo="Mis cultivos"
+                    foto={foto}
+                    nombre="Javier Gutierrez"/>
                 </header>
                 <article className='ContentHome'>
                     <article className='section1'>
                         <article className='sectionsCards'>
                             <article className='Card1'>
+                            <CardEspecie
+                            value="23"/>
                             </article>
                             <article className='Card1'>
+                            <CardEspecie
+                            value="23"/>
                             </article>
                             <article className='Card1'>
+                            <CardEspecie
+                            value="23"/>
                             </article>
                         </article>
                         <article className='sectionsTable'>
