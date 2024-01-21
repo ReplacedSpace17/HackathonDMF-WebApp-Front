@@ -19,7 +19,7 @@
 .parrafo {
     color: rgb(19, 19, 19);
     font-weight: 300;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .containerTitulo {
@@ -44,7 +44,7 @@
     width: 100%;
     align-content: center;
     text-align: center;
-    font-size: 15px;
+    font-size: 17px;
     color: #1F3139;
     font-weight: 500;
 }
@@ -79,7 +79,7 @@
 }
 .RegistrateAqui{
     color: #6AA33D;
-    font-size: 13px;
+    font-size: 15px;
     margin-left: 5px;
     cursor: pointer;
 }

@@ -1,12 +1,11 @@
 import './style/cardEspecie.css';
 
-import icono from '../../assets/Components/Icons/especie.svg';
 
-function CardEspecie({value=1}) {
+function CardInfoTop({value=1, titulo, icono}) {
     return (
         <div className="cardEspecie">
           <div className="cardEspecieTitulo">
-            <p className='EspecieTitle'>Especies</p>
+            <p className='EspecieTitle'>{titulo}</p>
             <img className='Icono' src={icono} alt="icono"/>
           </div>
             <div className="contentValue">
@@ -15,4 +14,4 @@ function CardEspecie({value=1}) {
         </div>
     )
 }
-export default CardEspecie;
+export default CardInfoTop;

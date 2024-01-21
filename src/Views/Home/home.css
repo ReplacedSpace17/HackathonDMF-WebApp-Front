@@ -13,7 +13,7 @@
     height: 100vh;
     width: 20%;
     min-width: 250px;
-    max-width: 400px;
+    max-width: 300px;
     padding: 0;
     display: flex;
     
@@ -92,7 +92,7 @@ flex-direction: column;
     height: 20%;
     min-width: 600px;
     min-height: 300px;
-    background-color: rgb(7, 16, 43);
+    background-color: rgb(206, 206, 206);
 }
 /*Sections 2*/
 .section2{
