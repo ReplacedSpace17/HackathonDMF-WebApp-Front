@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import video from '../../assets/Videos/videoLogin.mp4';
-import logo from '../../assets/logo_black.png';
-import './CompleteProfile.css';
+/*------------------------------------ IMPORTS REACT ------------------------------------*/
+import { useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { useSpring, animated } from '@react-spring/web';
 import axios from 'axios';
-import backenURL from '../../backend';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+/*------------------------------------ ASSETS ------------------------------------*/
 import avatar1 from '../../assets/Avatars/avatar1.png';
 import avatar2 from '../../assets/Avatars/avatar2.png';
 import avatar3 from '../../assets/Avatars/avatar3.png';
 import avatar4 from '../../assets/Avatars/avatar4.png';
+import backenURL from '../../backend';
+import video from '../../assets/Videos/videoLogin.mp4';
+import logo from '../../assets/logo_black.png';
+import './CompleteProfile.css';
+
+/*------------------------------------ COMPONENTE ------------------------------------*/
 
 function CompleteProfile() {
+  /*-------------------------------------- STATES -------------------------------*/
   const location = useLocation();
   const uid = location.state?.uid;
   const email = location.state?.email;
-
   const [avatarName, setAvatar] = useState('');
   const [birthdate, setBirthdate] = useState(''); // Agrega el estado para la fecha de nacimiento
 
@@ -28,37 +33,67 @@ function CompleteProfile() {
 
   const navigate = useNavigate();
 
-
-  const handleCodeVerify = () => {
-    navigate('/CodeVerify');
-  };
-
   const handleAvatar = (value) => {
     setAvatar(value);
     //alert(avatarName);
   };
+
   const handleBirthdateChange = (event) => {
     setBirthdate(event.target.value);
   };
 
-  /* Post form */
+  /*-------------------------------------- REQUEST AXIOS -------------------------------*/
   const handlePost = async () => {
+    // Verificar si todos los campos del formulario están llenos
+    if (!birthdate) {
+      // Mostrar una alerta si no se ha ingresado la fecha de nacimiento
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, ingresa tu fecha de nacimiento antes de continuar.',
+      });
+      return;
+    }
+    if (!avatarName) {
+      // Mostrar una alerta si no se ha seleccionado un avatar
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, selecciona un avatar antes de continuar.',
+      });
+      return;
+    }
+
     const formData = {
       birthdate: birthdate,
       avatarName: avatarName,
     };
+
     try {
       const response = await axios.post(backenURL + '/api/final-new-user/' + uid, formData);
       const { status, data } = response;
 
       if (status === 200) {
-        navigate('/Home');
+        //necesito un swal que cuando de clic en aceptar me redireccione a la pagina de home
+        Swal.fire({
+          icon: 'success',
+          title: 'Cuenta creada',
+          text: 'Tu cuenta ha sido creada exitosamente.',
+          showConfirmButton: true,
+          confirmButtonText: 'Finalizar registro',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate('/Login');
+          }
+        });
       }
     } catch (error) {
       console.error('Error al realizar la petición:', error);
       // Manejo de errores, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
     }
   };
+
+  /*-------------------------------------- RENDER COMPONENT -------------------------------*/
 
   return (
     <body className='bodyAppAcount'>
@@ -81,10 +116,6 @@ function CompleteProfile() {
           <img src={avatar2} alt="Avatar" className={`avatar ${avatarName === 'avatar2' ? 'avatarSelected' : ''}`} onClick={() => handleAvatar('avatar2')} />
           <img src={avatar3} alt="Avatar" className={`avatar ${avatarName === 'avatar3' ? 'avatarSelected' : ''}`} onClick={() => handleAvatar('avatar3')} />
           <img src={avatar4} alt="Avatar" className={`avatar ${avatarName === 'avatar4' ? 'avatarSelected' : ''}`} onClick={() => handleAvatar('avatar4')} />
-
-
-
-
         </div>
         <button className='buttonLogin' onClick={handlePost}>Continuar</button>
       </animated.aside>
@@ -97,5 +128,6 @@ function CompleteProfile() {
     </body>
   );
 }
+
 
 export default CompleteProfile;

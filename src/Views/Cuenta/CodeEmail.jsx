@@ -5,6 +5,7 @@ import logo from '../../assets/logo_black.png';
 import './crearCuenta.css';
 import { useSpring, animated } from '@react-spring/web';
 
+import Swal from 'sweetalert2';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import backenURL from '../../backend';
@@ -41,14 +42,20 @@ function CodeVerify() {
   };
 
   const handleEnviarCode = async () => {
+    setTimeRemaining(120);
     try {
+      Swal.fire({
+        icon: 'success',
+        title: 'Enviado',
+        text: 'Se ha enviado un códifo de verificación a tu correo electrónico.',
+      });
       const response = await axios.post(backenURL + '/api/validate-code/' + email);
       
     } catch (error) {
       console.error('Error al realizar la petición:', error);
       // Manejo de errores, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
     }
-    setTimeRemaining(120);
+    
   };
 
 
@@ -59,18 +66,46 @@ function CodeVerify() {
       setTimeRemaining((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
     
-    handleEnviarCode();
+    
     return () => clearInterval(intervalId);
   }, []);
 
 
   const handlePost = async () => {
+    if (formData.code.trim() === '') {
+      // Mostrar una alerta si el código está en blanco
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, ingresa un código de verificación antes de enviar.',
+      });
+      return;
+    }
+
+    //validar si el tiempo es mayor a 0
+    if (timeRemaining == 0) {
+      //Muestra una alerta si el tiempo es mayor a 0
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'El tiempo de verificación ha terminado, envía un nuevo código.',
+      });
+      return;
+    }
+
     try {
       const response = await axios.post(backenURL + '/api/activate-user/' + email, formData);
       const { status, data } = response;
 
       if (status === 200) {
         navigate('/CompleteProfile', { state: { uid: uid, email: email } });
+      }
+      if (status === 201) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El código es incorrecto, por favor verifica.',
+        });
       }
     } catch (error) {
       console.error('Error al realizar la petición:', error);
@@ -96,7 +131,7 @@ function CodeVerify() {
         />
         <div className="parrafo">Tiempo restante: {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}</div>
         <div className="containerCrearCuenta">
-          <p className='parrafo'>¿Ya no es válido?</p>
+          <p className='parrafo'>¿No se ha enviado?</p>
           <p className='RegistrateAqui' onClick={handleEnviarCode}>Enviar de nuevo</p>
         </div>
         <button className='buttonLogin' onClick={handlePost}>

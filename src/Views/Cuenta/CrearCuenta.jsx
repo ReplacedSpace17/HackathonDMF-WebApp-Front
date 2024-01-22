@@ -1,15 +1,20 @@
+/*------------------------------------ IMPORTS REACT ------------------------------------*/
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import video from '../../assets/Videos/videoLogin.mp4';
-import logo from '../../assets/logo_black.png';
-import './crearCuenta.css';
 import { useSpring, animated, a } from '@react-spring/web';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+/*------------------------------------ ASSETS ------------------------------------*/
+import video from '../../assets/Videos/videoLogin.mp4';
+import logo from '../../assets/logo_black.png';
+import './crearCuenta.css';
 import backenURL from '../../backend';
 
+
+/*------------------------------------ COMPONENTE ------------------------------------*/
 function CrearCuenta() {
 
+  /*-------------------------------------- STATES -------------------------------*/
   const [formData, setFormData] = useState({
     Nombre: '',
     ApellidoPaterno: '',
@@ -29,12 +34,8 @@ function CrearCuenta() {
   const navigate = useNavigate();
 
   /*-------------------------------------- Navegación -------------------------------*/
-
   const handleClick = () => {
     navigate('/Login');
-  };
-  const handleCodeVerify = () => {
-    navigate('/CodeVerify');
   };
 
   /*-------------------------------------- Eventos -------------------------------*/
@@ -60,7 +61,6 @@ function CrearCuenta() {
       });
       return; // Detener el proceso si algún campo está vacío
     }
-
 
     // Validar formato de correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -105,32 +105,22 @@ function CrearCuenta() {
         });
         return; // Detener el proceso si el correo ya existe
       }
-      if (exists==false) {
-        //continue with the process
-        
+      if (exists==false) {      
         AgregarUsuario();
-        
       }
       
     } catch (error) {
       console.error('Error al realizar la petición:', error);
       // Manejo de errores, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
     }
-    
-
-    // Si todas las validaciones pasan, continuar al siguiente paso
-    
   };
+
   const AgregarUsuario = async () => {
     try {
       const response = await axios.post(backenURL + '/api/user', formData);
       const { status, data } = response;
   
       if (status === 201) {
-        // Usuario agregado correctamente, ahora envía el código de verificación
-       
-        
-        // Después de enviar el código, navega a la página de verificación
         navigate('/CodeVerify', { state: { uid: data.uid, email: data.email } });
       }
     } catch (error) {
@@ -141,8 +131,7 @@ function CrearCuenta() {
   
 
   
-
-
+  /*-------------------------------------- RENDER COMPONENT -------------------------------*/
   return (
     <body className='bodyAppAcount'>
       <animated.aside style={asideAnimation} className="aside-container">
