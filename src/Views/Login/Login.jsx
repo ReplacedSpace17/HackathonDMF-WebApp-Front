@@ -1,17 +1,32 @@
+/*------------------------------------ IMPORTS REACT ------------------------------------*/
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import video from '../../assets/Videos/videoLogin.mp4'
 import logo from '../../assets/logo_black.png'
 import './login.css'
-
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import backenURL from '../../backend';
 import { useSpring, animated } from '@react-spring/web';
+/*------------------------------------ ASSETS ------------------------------------*/
 
+/*------------------------------------ COMPONENTE ------------------------------------*/
 function Login() {
+
+  /*------------------------------------ STATES ------------------------------------*/
     // Define la animación para la entrada del aside
     const asideAnimation = useSpring({
       from: { opacity: 0, transform: 'translateX(-100%)' },
       to: { opacity: 1, transform: 'translateX(0)' },
     });
+    const [formData, setFormData] = useState({
+    
+      Email: '',
+      Password: ''
+   
+    });
 
+  /*------------------------------------ NAVEGACIÓN------------------------------------*/
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -23,7 +38,30 @@ function Login() {
   const handleHome = () => {
     navigate('/Home');
   }
-  
+
+    const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  /*------------------------------------ SOLICITUDES ------------------------------------*/
+
+  const handlePost = async () => {
+    // Verificar si todos los campos del formulario están llenos
+    
+    //verificar si el correo ya existe
+    try {
+      const response = await axios.post(backenURL + '/api/login/' , formData);
+      
+      
+    } catch (error) {
+      console.error('Error al realizar la petición:', error);
+      // Manejo de errores, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+    }
+  };
+  /*------------------------------------ RENDER ------------------------------------*/
   return (
     <body className='bodyApp'>
       <animated.aside style={asideAnimation} className="aside-container">
@@ -34,11 +72,20 @@ function Login() {
           <h2 className='TITLE-Login'>Inicia Sesión</h2>
           <div className="line"></div>
         </div>
-        <input type="text" className='inputLogin' placeholder="example@gmail.com" />
-        <input type='password' className='inputLogin' placeholder="*********" />
+        {Object.keys(formData).map((key) => (
+          <input
+            key={key}
+            type={key.includes('Contrasena') ? 'password' : 'text'}
+            className='inputLogin'
+            placeholder={key.replace(/([A-Z])/g, ' $1').trim()} // Transforma CamelCase a palabras separadas
+            name={key}
+            value={formData[key]}
+            onChange={handleChange}
+          />
+        ))}
         <p className='parrafo'>¿Olvidaste tu contraseña?</p>
         <div className="containerCrearCuenta"><p className='parrafo'>¿No tienes cuenta?  </p><p className='RegistrateAqui' onClick={handleCreateCuenta}>Registrate aquí</p></div>
-        <button className='buttonLogin' onClick={handleClick}>Iniciar Sesión</button>
+        <button className='buttonLogin' onClick={handlePost}>Iniciar Sesión</button>
       </animated.aside>
       <div id="video-background">
 
