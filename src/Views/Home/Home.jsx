@@ -3,7 +3,8 @@
 import datos from './tabla.json'
 import './home.css'
 
-
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
 //---------------------------------------------------- ASSETS ----------------------------------------------------//
 
@@ -24,6 +25,21 @@ import LineChartComponent from '../../Components/Graphics/Line.jsx';
 
 function Home() {
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Verificar si hay un token de sesión almacenado en el localStorage
+        const token = localStorage.getItem('token');
+        const emailAccess = localStorage.getItem('email');
+        if (!token) {
+            // Si no hay token, redirigir al usuario a la página de inicio de sesión
+            navigate('/Login');
+        }
+        // Si no hay token, redirigir al usuario a la página de inicio de sesión
+
+        
+    }, [navigate]);
+
     return (
         <body className='bodyHome'>
             <nav className='navHome'>
@@ -35,6 +51,7 @@ function Home() {
                         titulo="Mis cultivos"
                         foto={foto}
                         nombre="Javier Gutierrez" 
+                        email= "sjsnjwsnjnjnj"
                     />
                 </header>
                 <article className='ContentHome'>

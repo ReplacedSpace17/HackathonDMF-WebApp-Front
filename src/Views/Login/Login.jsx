@@ -50,17 +50,59 @@ function Login() {
 
   const handlePost = async () => {
     // Verificar si todos los campos del formulario están llenos
-    
+    for (const key in formData) {
+      if (formData[key] === '') {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Por favor llena todos los campos',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+        return;
+      }
+    }
+  
     //verificar si el correo ya existe
     try {
-      const response = await axios.post(backenURL + '/api/login/' , formData);
-      
-      
+      const response = await axios.post(backenURL + '/api/login/', formData);
+      // Verificar el código de estado de la respuesta
+      if (response.status === 200) {
+        // Guardar el token en el almacenamiento local
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('email', response.data.email);
+        // Redirigir a la página de inicio
+        navigate('/Home');
+      }
     } catch (error) {
-      console.error('Error al realizar la petición:', error);
-      // Manejo de errores, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+      // Error en la solicitud
+      if (error.response) {
+        // El servidor ha respondido con un código de estado fuera del rango 2xx
+        // Aquí puedes manejar diferentes códigos de estado de error
+        if (error.response.status === 401) {
+          // Lógica para el caso de error 400
+          Swal.fire({
+            title: 'Error!',
+            text: 'Las credenciales son inválidas',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+        } else {
+          // Otros códigos de estado de error
+          Swal.fire({
+            title: 'Error!',
+            text: 'Error en la solicitud',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          });
+        }
+      } else {
+        // Error sin respuesta del servidor
+        console.error('Error al realizar la petición:', error);
+        // Manejo de errores, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+      }
     }
   };
+  
   /*------------------------------------ RENDER ------------------------------------*/
   return (
     <body className='bodyApp'>

@@ -8,13 +8,13 @@ import gaia from '../../assets/icons/iaIcon.svg'
 import stats from '../../assets/icons/statsIcon.svg'
 import salir from '../../assets/img.png'
 
-function Header({ titulo = "Título ", foto, nombre }) {
+function Header({ titulo = "Título ", foto, nombre , email}) {
     
     return (
         <div className="containerHeader">
             <div className="contentIZQUIERDA">
                 <h1 className= 'tituloHeader'>{titulo}</h1>
-                <div className="contentCorreo"><p className= 'txtCorreoHeader'>replacedspace17@gmail.com</p></div>
+                <div className="contentCorreo"><p className= 'txtCorreoHeader'>{email}</p></div>
             </div>
             <div className="contentDERECHA">
                 <img className= 'imgProfileHeader' src={foto}></img>
