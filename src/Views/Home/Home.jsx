@@ -54,45 +54,27 @@ function Home() {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-                    <Header
-                        titulo="Mis cultivos"
-                        foto={foto}
-                        nombre={nombre} 
-                        email= {email}
-                        avatar={avatar}
-                    />
+                    
                 </header>
                 <article className='ContentHome'>
                     <article className='section1'>
                         <article className='sectionsCards'>
                             <article className='Card1'>
-                                <CardInfoTop
-                                    value="23"
-                                    titulo="Especie"
-                                    icono={SpecieIcon} 
-                                />
+                                
                             </article>
                             <article className='Card1'>
-                                <CardInfoTop
-                                    value="4"
-                                    titulo="Cultivos"
-                                    icono={CultivoIcon} 
-                                />
+                               
                             </article>
                             <article className='Card1'>
-                                <CardInfoTop
-                                    value="17"
-                                    titulo="Biomasa"
-                                    icono={BiomasaIcon} 
-                                />
+                                
                             </article>
                         </article>
                         <article className='sectionsTable'>
                             <article className='contentTable1'>
-                                <Table data={datos} />
+                                
                             </article>
                             <article className='contentTable2'>
-                              <LineChartComponent   />
+                             
                             </article>
                         </article>
                     </article>
