@@ -62,4 +62,13 @@ font-size: 1em;
 font-weight: 500;
 margin-right: 1.5em;
 text-align: center;
+
+transition: all 0.3s;
+padding: 8px 10px;
+border-radius: 8px;
 }
+.nombreHeader:hover{
+    cursor: pointer;
+    background-color: #1f313910;
+   
+}   

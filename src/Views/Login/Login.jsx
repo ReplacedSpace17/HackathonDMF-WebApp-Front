@@ -67,9 +67,12 @@ function Login() {
       const response = await axios.post(backenURL + '/api/login/', formData);
       // Verificar el código de estado de la respuesta
       if (response.status === 200) {
+
         // Guardar el token en el almacenamiento local
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('email', response.data.email);
+        localStorage.setItem('nombre', response.data.nombre);
+        localStorage.setItem('avatar', response.data.avatar);
         // Redirigir a la página de inicio
         navigate('/Home');
       }
@@ -115,16 +118,17 @@ function Login() {
           <div className="line"></div>
         </div>
         {Object.keys(formData).map((key) => (
-          <input
-            key={key}
-            type={key.includes('Contrasena') ? 'password' : 'text'}
-            className='inputLogin'
-            placeholder={key.replace(/([A-Z])/g, ' $1').trim()} // Transforma CamelCase a palabras separadas
-            name={key}
-            value={formData[key]}
-            onChange={handleChange}
-          />
-        ))}
+  <input
+    key={key}
+    type={key === 'Password' ? 'password' : 'text'} // Establecer el tipo de input como 'password' si la clave es 'Password'
+    className='inputLogin'
+    placeholder={key.replace(/([A-Z])/g, ' $1').trim()} // Transforma CamelCase a palabras separadas
+    name={key}
+    value={formData[key]}
+    onChange={handleChange}
+  />
+))}
+
         <p className='parrafo'>¿Olvidaste tu contraseña?</p>
         <div className="containerCrearCuenta"><p className='parrafo'>¿No tienes cuenta?  </p><p className='RegistrateAqui' onClick={handleCreateCuenta}>Registrate aquí</p></div>
         <button className='buttonLogin' onClick={handlePost}>Iniciar Sesión</button>

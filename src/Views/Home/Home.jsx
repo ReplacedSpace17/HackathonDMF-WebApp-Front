@@ -4,7 +4,7 @@ import datos from './tabla.json'
 import './home.css'
 
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //---------------------------------------------------- ASSETS ----------------------------------------------------//
 
@@ -23,14 +23,21 @@ import LineChartComponent from '../../Components/Graphics/Line.jsx';
 
 
 
+
 function Home() {
 
     const navigate = useNavigate();
 
+    const nombre = localStorage.getItem('nombre');
+    const email = localStorage.getItem('email');
+    const avatar = localStorage.getItem('avatar');
+    const token = localStorage.getItem('token');
+
     useEffect(() => {
-        // Verificar si hay un token de sesión almacenado en el localStorage
-        const token = localStorage.getItem('token');
-        const emailAccess = localStorage.getItem('email');
+        
+        //const token = localStorage.getItem('token');
+       
+       
         if (!token) {
             // Si no hay token, redirigir al usuario a la página de inicio de sesión
             navigate('/Login');
@@ -50,8 +57,9 @@ function Home() {
                     <Header
                         titulo="Mis cultivos"
                         foto={foto}
-                        nombre="Javier Gutierrez" 
-                        email= "sjsnjwsnjnjnj"
+                        nombre={nombre} 
+                        email= {email}
+                        avatar={avatar}
                     />
                 </header>
                 <article className='ContentHome'>
