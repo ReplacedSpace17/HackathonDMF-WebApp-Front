@@ -34,17 +34,17 @@ function Home() {
     const token = localStorage.getItem('token');
 
     useEffect(() => {
-        
+
         //const token = localStorage.getItem('token');
-       
-       
+
+
         if (!token) {
             // Si no hay token, redirigir al usuario a la página de inicio de sesión
             navigate('/Login');
         }
         // Si no hay token, redirigir al usuario a la página de inicio de sesión
 
-        
+
     }, [navigate]);
 
     return (
@@ -54,32 +54,47 @@ function Home() {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-                    
+
                 </header>
                 <article className='ContentHome'>
                     <article className='section1'>
                         <article className='sectionsCards'>
                             <article className='Card1'>
-                                
+
                             </article>
                             <article className='Card1'>
-                               
+
                             </article>
                             <article className='Card1'>
-                                
+
                             </article>
                         </article>
                         <article className='sectionsTable'>
                             <article className='contentTable1'>
-                                
+
                             </article>
                             <article className='contentTable2'>
-                             
+
                             </article>
                         </article>
                     </article>
                     <article className='section2'>
-                        <h1>dfsf</h1>
+                        <article className='GraphicsContainer'>
+                            <article className='Graphics'>
+
+                            </article>
+                            <article className='Graphics'>
+
+                            </article>
+                        </article>
+                        <article className='ContainerCardParameters'>
+                            <article className='CardParameter'>
+
+                            </article>
+                            <article className='CardParameter'>
+
+                            </article>
+                        </article>
                     </article>
                 </article>
             </main>
