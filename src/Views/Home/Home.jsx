@@ -20,7 +20,7 @@ import Menu from '../../Components/Menu/Menu.jsx'
 import Table from '../../Components/Table/Table.jsx'
 
 import LineChartComponent from '../../Components/Graphics/Line.jsx';
-
+import PieChartComponent from '../../Components/Graphics/Pastel.jsx';
 
 
 
@@ -37,13 +37,13 @@ function Home() {
 
         //const token = localStorage.getItem('token');
 
-/*
-        if (!token) {
-            // Si no hay token, redirigir al usuario a la página de inicio de sesión
-            navigate('/Login');
-        }
-        // Si no hay token, redirigir al usuario a la página de inicio de sesión
-*/
+        /*
+                if (!token) {
+                    // Si no hay token, redirigir al usuario a la página de inicio de sesión
+                    navigate('/Login');
+                }
+                // Si no hay token, redirigir al usuario a la página de inicio de sesión
+        */
 
     }, [navigate]);
 
@@ -54,49 +54,61 @@ function Home() {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-
+                    <Header nombre={nombre} email={email} avatar={avatar} />
                 </header>
-                <article className='ContentHome'>
-                    <article className='section1'>
-                        <article className='sectionsCards'>
-                            <article className='Card1'>
+                <div className="containerHome">
+                    <div className="sectionLeft">
+                        <div className="containerCards">
+                            <div className="card">
+                                <CardInfoTop
+                                    value="5"
+                                    titulo="Especies"
+                                    icono={SpecieIcon}
+                                />
+                            </div>
+                            <div className="card">
 
-                            </article>
-                            <article className='Card1'>
+                            </div>
+                            <div className="card">
 
-                            </article>
-                            <article className='Card1'>
+                            </div>
 
-                            </article>
-                        </article>
-                        <article className='sectionsTable'>
-                            <article className='contentTable1'>
+                        </div>
+                        <div className="Table">
+                            <Table data={datos} />
+                        </div>
+                        <div className="Table">
+                            <Table data={datos} />
+                        </div>
+                        <div className="separator">
 
-                            </article>
-                            <article className='contentTable2'>
+                        </div>
 
-                            </article>
-                        </article>
-                    </article>
-                    <article className='section2'>
-                        <article className='GraphicsContainer'>
-                            <article className='Graphics'>
 
-                            </article>
-                            <article className='Graphics'>
+                    </div>
+                    <div className="sectionRight">
 
-                            </article>
-                        </article>
-                        <article className='ContainerCardParameters'>
-                            <article className='CardParameter'>
+                        <div className="Graphic">
+                        <LineChartComponent />
+                        </div>
+                        <div className="Graphic">
+                        <PieChartComponent/>
+                        </div>
+                        <div className="ContainerParameters">
+                            <div className="CardParameters">
 
-                            </article>
-                            <article className='CardParameter'>
+                            </div>
+                            <div className="CardParameters">
 
-                            </article>
-                        </article>
-                    </article>
-                </article>
+                            </div>
+                        </div>
+                        <div className="separator">
+
+                        </div>
+
+
+                    </div>
+                </div>
             </main>
         </body>
     );

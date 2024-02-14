@@ -6,7 +6,7 @@
    justify-content: space-between ;
     user-select: none;
     background-color: var(--fondoBlanco);
-    border-radius: 20px;
+    border-radius: 15px;
     border-color: 1px solid var(--contorno);
 }
 
@@ -33,7 +33,7 @@
 .cardEspecieValue{
     padding: 0;
     margin: 0;
-   font-size: 3em;
+   font-size: 2.5em;
     font-weight: 700;
     color: var(--colorTitle);
 }

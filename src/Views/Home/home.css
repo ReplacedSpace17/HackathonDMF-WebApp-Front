@@ -1,5 +1,5 @@
 .bodyHome{
-    background-color: aliceblue;
+    background-color: rgb(221, 221, 221);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -8,7 +8,7 @@
  
 }
 
-/*Menu*/
+/*------------------------------------------- Menu------------*/
 .navHome{
     height: 100vh;
     width: 15%;
@@ -19,135 +19,91 @@
     
 }
 
-/*Main*/
 .mainHome{
-    height: 100vh;
+    width: 85%;
+    background-color: violet;
+}
+.headerHome{
     width: 100%;
-background-color: rgb(26, 26, 26);
+    height: 10%;
+    background-color: aqua;
+}
+.containerHome{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: tomato;
+}
+.sectionLeft{
+width: 50%;
+height: 100%;
+background-color: yellowgreen;
+overflow: auto;
 display: flex;
 flex-direction: column;
-
+align-items: center;
+justify-content: start;
 }
 
-.headerHome{
-    background-color: rgb(75, 5, 56);
-    height: 10vh;
-    width: 100%;
-    min-height: 70px;
-}
-
-.ContentHome{
-    background-color: rgb(150, 201, 32);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-/*-----------------------------------------------------------------------Sections 1*/
-.section1{
-    background-color: seagreen;
+.sectionRight{
     width: 50%;
-    height: 93%;
-    display: flex;
-    flex-direction: column;
-    padding-left: 1rem;
+height: 100%;
+    background-color: wheat;
     overflow: auto;
-    
 }
 
-.sectionsCards{
-    width: auto;
+/*---------------------------------- SECTION IZQUIERDA -----------------------------------*/
+.containerCards{
+    width: 97%;
     height: auto;
-    background-color: rgb(37, 25, 25);
+    margin-top: 0.5em;
+    background-color: tomato;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    
+}
+.card{
+    width: 32%;
+    height: 110px;
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+.Table{
+    margin-top: 0.5em;
+    width: 97%;
+    height: auto;
+    min-height: 300px;
+    background-color: rgb(55, 55, 83);
+}
+.separator{
+    width: 100%;
+    height: 0.5em;
+    margin-top: 0.5em;
+}
+
+/*---------------------------------- SECTION DERECHA -----------------------------------*/
+
+
+.Graphic{
+    margin-top: 0.5em;
+    width: 97%;
+    height: auto;
+    min-height: 300px;
+    background-color: rgb(55, 55, 83); 
+}
+.ContainerParameters{
     display: flex;
     flex-direction: row;
-}
-
-/*card*/
-.Card1{
-    margin: 0.3rem;
-    background-color: rgb(61, 65, 75);
-    width: 250px;
-    height: 130px;
-    min-width: 160px;
-    min-height: 90px;
-}
-
-.sectionsTable{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(116, 30, 30);
-    margin-bottom: 1em;
-    
-}
-.contentTable1{
-    margin-top: 1em;
-    width: 100%;
-    height: 20%;
-   
-    min-height: 300px;
-    
-    background-color: rgba(65, 225, 116, 0.411);
-}
-.contentTable2{
-    margin-top: 1em;
-    width: 100%;
-    height: 20%;
-    margin-bottom: 1em;
-    min-height: 300px;
-    background-color: rgba(206, 206, 206, 0.199);
-}
-/*-----------------------------------------------------------------------Sections 2*/
-.section2{
-    width: 50%;
-    background-color: rgb(8, 11, 10);
-    display: flex;
-    flex-direction: column;
+    align-content: center;
     justify-content: center;
-    align-items: center;
-    overflow-y: auto;
+background-color: rgb(109, 9, 9);
 }
-.GraphicsContainer{
-    width:100%;
+.CardParameters{
+    margin: 0.5em;
+    width: 30%;
     height: auto;
-    background-color: rgba(254, 0, 55, 0.896);
-    display: flex;
-    flex-direction: column;
-    padding-top: 0.3em;
-    padding-left: 1em;
-    margin-top: 15em;
-    
+    min-height: 260px;
+    background-color: royalblue;
 }
-.Graphics{
-    margin-bottom: 1em;
-    background-color: aqua;
-    width: 95%;
-    height: 45%;
-    min-height: 250px;
-}
-
-.ContainerCardParameters{
-    width: 100%;
-    height: auto;
-    background-color: rgba(115, 40, 56, 0.896);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 2em;
-    
-    
-}
-.CardParameter{
-    background-color: aliceblue;
-    width: 40%;
-    height: 90%;
-    min-height:  300px;
-   
-   
-}
-
-
-
