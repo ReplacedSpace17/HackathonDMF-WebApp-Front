@@ -1,23 +1,27 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import './line.css'
+import './line.css';
 
-const LineChartComponent = () => {
+const LineChartComponent = ({ data }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
+    if (!data || data.length === 0) return;
+
     const ctx = chartRef.current.getContext('2d');
 
-    const data = {
-      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+    const labels = data.map(item => item.fecha);
+    const biomasaData = data.map(item => item.biomasa);
+
+    const chartData = {
+      labels: labels,
       datasets: [
         {
-          label: 'Datos de ejemplo',
-          data: [30, 40, 25, 55, 20],
-          borderColor: 'rgba(75, 192, 192, 1)',
+          label: 'Biomasa',
+          data: biomasaData,
+          borderColor: '#4175F2',
           borderWidth: 2,
           fill: false,
-          // Ajusta esta propiedad para líneas redondeadas
         },
       ],
     };
@@ -25,8 +29,7 @@ const LineChartComponent = () => {
     const options = {
       scales: {
         x: {
-          type: 'category',
-          labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+          display: false, // Oculta la etiqueta del eje x
         },
         y: {
           beginAtZero: true,
@@ -36,25 +39,21 @@ const LineChartComponent = () => {
 
     new Chart(ctx, {
       type: 'line',
-      data: data,
+      data: chartData,
       options: options,
     });
-  }, []);
+  }, [data]);
 
   return (
-    
     <div className="container">
       <div className="containerTopGraphic">
-        <p className='titleGraphic'>Obtencion de biomasa</p>
-
+        <p className="titleGraphic">Obtención de biomasa</p>
       </div>
       <div className="containerGraphicLine">
-      <canvas ref={chartRef} className='grafico'/>
+        <canvas ref={chartRef} className="grafico" />
       </div>
-      
     </div>
   );
-  
 };
 
 export default LineChartComponent;

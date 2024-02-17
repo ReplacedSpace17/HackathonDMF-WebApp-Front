@@ -1,6 +1,7 @@
 
 //---------------------------------------------------- REACT ----------------------------------------------------//
 import datos from './tabla.json'
+import biomasaData from './biomasa.json'
 import './home.css'
 
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +19,7 @@ import Header from '../../Components/Header/Header.jsx'
 import CardInfoTop from '../../Components/CardsInfo/cardTop.jsx'
 import Menu from '../../Components/Menu/Menu.jsx'
 import Table from '../../Components/Table/Table.jsx'
+import TableCultivos from '../../Components/Table/TableCultivos.jsx'
 
 import LineChartComponent from '../../Components/Graphics/Line.jsx';
 import DonutChartComponent from '../../Components/Graphics/Pastel.jsx';
@@ -55,7 +57,7 @@ function Home() {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-                    <Header nombre={nombre} email={email} avatar={avatar} />
+                    <Header titulo= "Mis cultivos" nombre={nombre} email={email} avatar={avatar} />
                 </header>
                 <div className="containerHome">
                     <div className="sectionLeft">
@@ -68,10 +70,18 @@ function Home() {
                                 />
                             </div>
                             <div className="card">
-
+                                <CardInfoTop
+                                    value="5"
+                                    titulo="Cultivos"
+                                    icono={CultivoIcon}
+                                />
                             </div>
                             <div className="card">
-
+                                <CardInfoTop
+                                    value="5"
+                                    titulo="Biomasa (gr)"
+                                    icono={BiomasaIcon}
+                                />
                             </div>
 
                         </div>
@@ -79,28 +89,39 @@ function Home() {
                             <Table data={datos} />
                         </div>
                         <div className="Table">
-                            <Table data={datos} />
+                            <TableCultivos data={datos} />
                         </div>
                         <div className="separator">
-
                         </div>
 
 
                     </div>
                     <div className="sectionRight">
                         <div className="Graphic">
-                            <DonutChartComponent />
+                            <DonutChartComponent 
+                            Title="Tipo de Microalga"
+                            aguaDulceValue={50}
+                            aguaSaladaValue={50}
+                            />
                         </div>
                         <div className="Graphic">
-                            <LineChartComponent />
+                        <LineChartComponent data={biomasaData} />
                         </div>
                         <div className="ContainerParameters">
                             <div className="CardParameters">
-                            <CardBottomCultivo/>
+                                <CardBottomCultivo 
+                                especie="Value"
+                                origen="Value"
+                                medio="Value"
+                                />
 
                             </div>
                             <div className="CardParameters">
-                            <CardBottomParametros/>
+                                <CardBottomParametros 
+                                iluminacion="Value"
+                                temperatura="Value"
+                                ph="Value"
+                                />
                             </div>
                         </div>
                         <div className="separator">

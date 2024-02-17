@@ -1,84 +1,93 @@
-.bodyHome{
-    background-color: rgb(221, 221, 221);
+.bodyHome {
+    background-color: #F2F2F2;
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: row;
-   
- 
+
+
 }
 
 /*------------------------------------------- Menu------------*/
-.navHome{
+.navHome {
     height: 100vh;
     width: 15%;
     min-width: 220px;
     max-width: 300px;
     padding: 0;
     display: flex;
-    
+
 }
 
-.mainHome{
+.mainHome {
     width: 85%;
-    background-color: violet;
+   
 }
-.headerHome{
+
+.headerHome {
     width: 100%;
     height: 10%;
-    background-color: aqua;
+
+    max-height: 70px;
 }
-.containerHome{
-    height: 90%;
+
+.containerHome {
+    height:90%;
     width: 100%;
     display: flex;
     flex-direction: row;
-    background-color: tomato;
-}
-.sectionLeft{
-width: 50%;
-height: 100%;
-background-color: yellowgreen;
-overflow: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: start;
+
 }
 
-.sectionRight{
+.sectionLeft {
     width: 50%;
-height: 100%;
-    background-color: wheat;
+    height: 100%;
+
     overflow: auto;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+
+}
+
+.sectionRight {
+    width: 50%;
+    height: 100%;
+
+    overflow: auto;
+    max-width: 550px;
 }
 
 /*---------------------------------- SECTION IZQUIERDA -----------------------------------*/
-.containerCards{
+.containerCards {
     width: 97%;
     height: auto;
     margin-top: 0.5em;
-    background-color: tomato;
+
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     justify-content: space-between;
     
-}
-.card{
-    width: 32%;
-    height: 110px;
-    background-color: rgba(0, 0, 0, 0.13);
+
 }
 
-.Table{
+.card {
+    width: 32%;
+    height: 110px;
+
+    
+}
+
+.Table {
     margin-top: 0.5em;
     width: 97%;
     height: auto;
     min-height: 300px;
-    background-color: rgb(55, 55, 83);
+
 }
-.separator{
+
+.separator {
     width: 100%;
     height: 0.5em;
     margin-top: 0.5em;
@@ -87,27 +96,65 @@ height: 100%;
 /*---------------------------------- SECTION DERECHA -----------------------------------*/
 
 
-.Graphic{
+.Graphic {
     margin-top: 0.5em;
     width: 97%;
     height: auto;
     min-height: 300px;
-    background-color: rgb(55, 55, 83); 
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.ContainerParameters{
+
+.ContainerParameters {
     display: flex;
     flex-direction: row;
     align-content: center;
     justify-content: center;
-background-color: rgb(109, 9, 9);
+    
+
 }
-.CardParameters{
+
+.CardParameters {
     margin: 0.5em;
-    width: 30%;
+    width: 40%;
     height: auto;
     min-height: 260px;
-    background-color: royalblue;
+
+}
+
+
+
+@media only screen and (min-width: 1350px) {
+
+    .sectionLeft {
+
+        width: 40%;
+        margin-right: 1em;
+    }
+
+    .sectionRight {
+
+        width: 40%;
+        
+    }
+
+    .containerHome {
+        justify-content: center;
+    }
+
+    .Graphic {
+        
+        width: 100%;
+        min-height: 200px;
+    }
+    .CardParameters {
+        margin: 0.5em;
+        width: 50%;
+        height: auto;
+        min-height: 260px;
+    
+    }
+    
 }

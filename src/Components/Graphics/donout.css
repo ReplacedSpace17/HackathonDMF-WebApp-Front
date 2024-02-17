@@ -8,13 +8,15 @@
     justify-content: center;
     position: relative;
     flex-direction: column;
+    border: 1px solid var(--contorno);
+    user-select: none;
   }
   
   .containerGraphicDonut{
     margin: 1.5em;
     width: 90%;
     
-    background-color: rgb(71, 50, 50);
+    
     position: relative;
   }
   .grafico {
@@ -22,3 +24,7 @@
     height: auto; /* Deja que la altura se ajuste automáticamente */
   }
   
+  .titleGraphic{
+    margin-top: 0.5em;
+    color: var(--colorTitle);
+  }

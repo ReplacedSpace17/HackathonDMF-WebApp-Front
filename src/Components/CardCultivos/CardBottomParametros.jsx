@@ -1,37 +1,40 @@
 import './infoCultivo.css';
 import React from 'react';
 
-import CultivoIcon from '../../assets/Components/Icons/cultivo.svg';
+import IconTitle from '../../assets/Components/Icons/ajustes.svg';
+import Iluminacion from '../../assets/Components/Icons/iluminacion.svg';
+import Temp from '../../assets/Components/Icons/temperatura.svg';
+import Ph from '../../assets/Components/Icons/ph.svg';
 
-function CardBottomParametros() {
+function CardBottomParametros({iluminacion, temperatura, ph}) {
    return (
       <div className="containerParameters">
          <div className="contentTop">
-            <p>Especie</p>
-            <img src={CultivoIcon} className="iconCultivoCard" />
+            <p className='TitleCardPequeña'>Parámetros</p>
+            <img src={IconTitle} className="iconCultivoCard" />
          </div>
          <div className="contentCenter">
 
             <div className="infoCultivo">
                <div className="containerIconText">
-                  <img src={CultivoIcon} className="iconParametroCard" />
+                  <img src={Iluminacion} className="iconParametroCard" />
                   <div className="containerText">
-                     <p className='titleCardEspecie'>Titulo</p>
-                     <p className='valueCardEspecie'>subtitulo</p>
+                     <p className='titleCardEspecie'>Iluminación</p>
+                     <p className='valueCardEspecie'>{iluminacion}</p>
                   </div>
                </div>
                <div className="containerIconText">
-                  <img src={CultivoIcon} className="iconParametroCard" />
+                  <img src={Temp} className="iconParametroCard" />
                   <div className="containerText">
-                     <p className='titleCardEspecie'>Titulo</p>
-                     <p className='valueCardEspecie'>subtitulo</p>
+                     <p className='titleCardEspecie'>Temperatura</p>
+                     <p className='valueCardEspecie'>{temperatura}</p>
                   </div>
                </div>
                <div className="containerIconText">
-                  <img src={CultivoIcon} className="iconParametroCard" />
+                  <img src={Ph} className="iconParametroCard" />
                   <div className="containerText">
-                     <p className='titleCardEspecie'>Titulo</p>
-                     <p className='valueCardEspecie'>subtitulo</p>
+                     <p className='titleCardEspecie'>pH del medio</p>
+                     <p className='valueCardEspecie'>{ph}</p>
                   </div>
                </div>
 
@@ -39,7 +42,7 @@ function CardBottomParametros() {
             </div>
          </div>
          <div className="contentBottom">
-            <button>Obtener biomasa</button>
+            <button className='btnCardBottom'>Modificar ajustes</button>
          </div>
       </div>
    )

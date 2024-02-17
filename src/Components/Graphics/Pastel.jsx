@@ -1,29 +1,27 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import './donout.css'
-// Asegúrate de tener un archivo CSS para estilizar el gráfico de dona si es necesario.
 
-const DonutChartComponent = () => {
+
+const DonutChartComponent = ({ Title, aguaDulceValue, aguaSaladaValue }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
 
     const data = {
-      labels: ['Rojo', 'Verde', 'Azul'],
+      labels: ['Agua Dulce', 'Agua Salada'],
       datasets: [
         {
-          label: 'Datos de ejemplo',
-          data: [30, 40, 25],
+          label: 'Tipo de Microalga',
+          data: [aguaDulceValue, aguaSaladaValue],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
+            '#4175F2', // Color para agua dulce
+            '#809EFE', // Color para agua salada
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(54, 162, 235, 1)',
+            '#4175F2',
+            '#809EFE',
           ],
           borderWidth: 1,
         },
@@ -32,8 +30,8 @@ const DonutChartComponent = () => {
 
     const options = {
       responsive: true,
-      maintainAspectRatio: false, // Esto evita que el gráfico mantenga una relación de aspecto fija.
-      cutout: '70%', // Controla el tamaño del agujero en el centro de la dona.
+      maintainAspectRatio: false,
+      cutout: '70%',
       plugins: {
         legend: {
           position: 'bottom',
@@ -42,17 +40,16 @@ const DonutChartComponent = () => {
     };
 
     new Chart(ctx, {
-      type: 'doughnut', // Tipo de gráfico: dona
+      type: 'doughnut',
       data: data,
       options: options,
     });
-  }, []);
+  }, [aguaDulceValue, aguaSaladaValue, Title]);
 
   return (
     <div className="container">
       <div className="containerTopGraphic">
-        <p className='titleGraphic'>Obtencion de biomasa</p>
-
+        <p className='titleGraphic'>{Title}</p>
       </div>
       <div className="containerGraphicDonut">
         <canvas ref={chartRef} className="grafico" />

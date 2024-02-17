@@ -6,18 +6,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid var(--contorno);
+
+    user-select: none;
 }
 
 .contentTop{
-    width: 90%;
+    
+    width: 80%;
     height: 20%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: blue;
+
     font-size: 1em;
     align-items: center;
     color: black;
+
+ 
 }
 p{
     margin: 0;
@@ -28,17 +34,17 @@ p{
     color: black;
 }
 .contentCenter{
-    width: 100%;
+    width: 80%;
     height: 60%;
-    background-color: rgb(175, 80, 80);
+    
     display: flex;
     flex-direction: row;
 }
 .line{
-    width: 8px;
+    width: 4px;
     height: 100%;
-    margin-left: 1em;
-    background-color: rgb(54, 146, 103);
+  
+    background-color: #1F3139;
 }
 .infoCultivo{
     width: 100%;
@@ -47,26 +53,33 @@ p{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(172, 132, 21);  
+    
 }
 .containerText{
-    width: 90%;
-    background-color: rgb(33, 61, 61);
+    width: 80%;
+    margin-top: 0.5em;
+   
 }
 .titleCardEspecie{
 font-size: 13px;
+color: #7D7D7D;
 }
 .valueCardEspecie{
-font-size: 20px;
+font-size:16px;
+color: #1F3139;
 }
 .contentBottom{
     width: 100%;
     height: 20%;
-    background-color: rgb(59, 37, 37);
+    
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.TitleCardPequeña{
+    color: var(--colorTitle);
+}
+
 
 /* containerIconText de parametros*/
 
@@ -74,9 +87,30 @@ font-size: 20px;
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: aqua;
+    
     align-items: center;
 }
 .iconParametroCard{
     margin: 0.5em;
+    margin-right: 1em;
 }
+
+.btnCardBottom{
+    width: 60%;
+    color: #1f3139bc;
+    background-color: transparent;
+    border: none;
+    padding: 0.5em;
+    border-radius: 8px;
+    font-size: 13px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.btnCardBottom:hover{
+    color: #1f3139bc;
+    background-color: #E4F0FF;
+}
+.btnCardBottom:active{
+    scale: 0.9;
+}
+

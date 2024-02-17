@@ -1,0 +1,169 @@
+.containerMisCepas {
+    height:95%;
+    width: 100%;
+    display: flex;
+   
+justify-content: center;
+align-items: center;
+
+
+    /* Add your background pattern here */
+    background-color: #31313100;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.097) 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: -5px -5px
+  
+}
+
+
+.containerTableMisCepas {
+    
+    width: 70%;
+    height: 60%;
+   
+}
+.iconTable{
+    width: 20px;
+    cursor: pointer;
+    margin-right: 1.5em;
+    transition: all 0.3s ease;
+}
+.iconTable:active{
+    scale: 0.9;
+    
+}
+
+
+
+/*---------------agregar cepa */
+
+.containerAgregarCepas{
+    height:95%;
+    width: 100%;
+    display: flex;
+   
+justify-content: center;
+align-items: start;
+
+
+    /* Add your background pattern here */
+    background-color: #31313100;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.097) 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: -5px -5px
+  
+}
+.containerFormAddCepa{
+    margin-top: 4em;
+    width: 40%;
+    height: auto;
+    border: 1px solid var(--contorno);
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.titleAddCepa{
+    font-size: 23px;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: #1F3139;
+    text-align: center;
+}
+.textAddCepa{
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    color: #929292;
+}
+.formAddCepa{
+    
+    width: 70%;
+}
+.containerInputAddCepa{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    width: 100%;
+    
+}
+.textInput{
+    color: #151717;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+.inputAddCepa{
+    background-color: transparent;
+    border: 1px solid #E6E6E6;
+    padding: 8px 0px 8px 0px;
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    color: black;
+    font-weight: 300;
+    border-radius: 10px;
+}
+.inputAddCepa:focus{
+    outline: none;
+    border: 2px solid #2D79F3;
+
+}
+
+.containerBtnFormAddCepa{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+.btnFormAddCepa{
+    background-color: #2d79f300;
+    color: rgba(0, 0, 0, 0.643);
+    border: 1px solid #00000046;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40%;
+}
+
+#aceptar:hover{
+    background-color: #6AA33D;
+    color: white;
+    border: 1px solid #00000070;
+    
+}
+#cancelar:hover{
+    background-color: #a92020;
+    color: white;
+    
+}
+
+
+
+
+
+@media only screen and (min-width: 1350px) {
+
+  
+    .containerTableMisCepas{
+        width: 50%;
+        height: 50%;
+       
+    }
+
+    .containerFormAddCepa{
+
+        width: 30%;
+        height: auto;
+        background-color: white;
+    }
+}

@@ -14,7 +14,7 @@ import avatar2 from '../../assets/Avatars/avatar2.png';
 import avatar3 from '../../assets/Avatars/avatar3.png';
 import avatar4 from '../../assets/Avatars/avatar4.png';
 
-function Header({ titulo = "Título ", foto, nombre , email, avatar}) {
+function Header({ titulo , foto, nombre , email, avatar}) {
     
     let fotoAvatar = ''; 
 

@@ -4,6 +4,7 @@
     height: 100%;
     background-color: #fff;
     user-select: none;
+    border: 1px solid var(--contorno);
 }
 .logoMenu{
     margin-top: 5em;

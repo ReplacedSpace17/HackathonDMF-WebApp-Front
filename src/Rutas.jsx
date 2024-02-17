@@ -6,6 +6,9 @@ import CrearCuenta from "./Views/Cuenta/CrearCuenta.jsx"
 import Home from "./Views/Home/Home.jsx"
 import CodeVerify from "./Views/Cuenta/CodeEmail.jsx"
 import CompleteProfile from "./Views/Cuenta/CompleteProfile.jsx"
+import MisCepas from "./Views/MisCepas/MisCepas.jsx"
+import AgregarCepa from "./Views/MisCepas/AgregarCepa.jsx"
+
 function Rutas() {
   return (
     <div className="Aplicacion">
@@ -16,6 +19,9 @@ function Rutas() {
         <Route path="/Home" element={ <Home /> } />
         <Route path="/CodeVerify" element={ <CodeVerify /> } />
         <Route path="/CompleteProfile" element={ <CompleteProfile /> } />
+        <Route path="/MisCepas" element={ <MisCepas /> } />
+        <Route path="/AgregarCepa" element={ <AgregarCepa /> } />
+
       </Routes>
     </div>
   )
