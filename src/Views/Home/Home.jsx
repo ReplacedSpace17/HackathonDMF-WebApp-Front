@@ -20,9 +20,10 @@ import Menu from '../../Components/Menu/Menu.jsx'
 import Table from '../../Components/Table/Table.jsx'
 
 import LineChartComponent from '../../Components/Graphics/Line.jsx';
-import PieChartComponent from '../../Components/Graphics/Pastel.jsx';
+import DonutChartComponent from '../../Components/Graphics/Pastel.jsx';
 
-
+import CardBottomCultivo from '../../Components/CardCultivos/CardBottomCultivo.jsx'
+import CardBottomParametros from '../../Components/CardCultivos/CardBottomParametros.jsx';
 
 function Home() {
 
@@ -87,19 +88,19 @@ function Home() {
 
                     </div>
                     <div className="sectionRight">
-
                         <div className="Graphic">
-                        <LineChartComponent />
+                            <DonutChartComponent />
                         </div>
                         <div className="Graphic">
-                        <PieChartComponent/>
+                            <LineChartComponent />
                         </div>
                         <div className="ContainerParameters">
                             <div className="CardParameters">
+                            <CardBottomCultivo/>
 
                             </div>
                             <div className="CardParameters">
-
+                            <CardBottomParametros/>
                             </div>
                         </div>
                         <div className="separator">

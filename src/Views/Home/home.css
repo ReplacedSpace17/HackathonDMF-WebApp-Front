@@ -51,6 +51,7 @@ justify-content: start;
 height: 100%;
     background-color: wheat;
     overflow: auto;
+    
 }
 
 /*---------------------------------- SECTION IZQUIERDA -----------------------------------*/
@@ -92,6 +93,9 @@ height: 100%;
     height: auto;
     min-height: 300px;
     background-color: rgb(55, 55, 83); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .ContainerParameters{
     display: flex;

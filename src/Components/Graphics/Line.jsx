@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import './line.css'
 
 const LineChartComponent = () => {
   const chartRef = useRef(null);
@@ -40,7 +41,20 @@ const LineChartComponent = () => {
     });
   }, []);
 
-  return <canvas ref={chartRef} width="400" height="200" />;
+  return (
+    
+    <div className="container">
+      <div className="containerTopGraphic">
+        <p className='titleGraphic'>Obtencion de biomasa</p>
+
+      </div>
+      <div className="containerGraphicLine">
+      <canvas ref={chartRef} className='grafico'/>
+      </div>
+      
+    </div>
+  );
+  
 };
 
 export default LineChartComponent;
