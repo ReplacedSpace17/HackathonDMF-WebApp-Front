@@ -23,6 +23,7 @@ function AgregarCepa() {
 
     useEffect(() => {
         // Aquí puedes colocar cualquier lógica que necesites
+        // Por ejemplo, verificar si el usuario tiene permisos para estar en esta vista
     }, [navigate]);
 
     // Función para manejar el envío del formulario
