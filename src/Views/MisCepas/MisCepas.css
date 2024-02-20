@@ -50,11 +50,12 @@ align-items: start;
     background-color: #31313100;
     background-image: radial-gradient(rgba(0, 0, 0, 0.097) 2px, transparent 0);
     background-size: 30px 30px;
-    background-position: -5px -5px
+    
+    
   
 }
 .containerFormAddCepa{
-    margin-top: 4em;
+    margin-top: 1em;
     width: 40%;
     height: auto;
     border: 1px solid var(--contorno);
