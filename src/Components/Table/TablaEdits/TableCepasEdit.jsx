@@ -5,6 +5,7 @@ import data from '../../../Views/Home/tabla.json';
 import editIcon from '../../../assets/Components/Icons/edit.svg';
 import deleteIcon from '../../../assets/Components/Icons/delete.svg';
 
+import Swal from 'sweetalert2';
 
 function TableCepasEdit() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -21,6 +22,38 @@ function TableCepasEdit() {
     const agregarCepa = () => {
         navigate('/AgregarCepa');
     };
+
+  
+    const deleteCepa = (id) => {
+        //alerta de confirmacion
+        Swal.fire({
+            title: '¿Estás seguro de eliminar la cepa?',
+            text: "No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarla!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                //logica para eliminar la cepa
+
+                Swal.fire(
+                    'Eliminada!',
+                    'La cepa ha sido eliminada.',
+                    'success'
+                )
+                
+            }
+        })
+    };
+
+    const editCepa = (ID, Nombre, Origen, medio ) => {
+        navigate('/EditarCepa' , {state: {ID, Nombre, Origen, medio}}); ;
+
+    };
+
 
     return (
         <div className="containerCardTable">
@@ -53,8 +86,8 @@ function TableCepasEdit() {
                                 <td className='tdT1'>{item.Origen}</td>
                                 <td className='tdT1'>{item.Medio}</td>
                                 <td className='tdT1'> {/* Columna para acciones */}
-                                <img src={editIcon} onClick={"#"} className='iconTable'/>
-                                <img src={deleteIcon} onClick={"#"} className='iconTable'/>
+                                <img src={editIcon} onClick={()=> editCepa(item.ID, item.Nombre, item.Origen, item.Medio)} className='iconTable'/>
+                                <img src={deleteIcon} onClick={() => deleteCepa(item.ID)} className='iconTable'/>
                                    
                                 </td>
                             </tr>

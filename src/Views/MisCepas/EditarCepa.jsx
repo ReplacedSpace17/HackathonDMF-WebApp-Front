@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MisCepas.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import foto from '../../assets/img.png'
 import SpecieIcon from '../../assets/Components/Icons/especie.svg';
 import CultivoIcon from '../../assets/Components/Icons/cultivo.svg';
@@ -11,9 +11,13 @@ import Menu from '../../Components/Menu/Menu.jsx'
 
 import Swal from 'sweetalert2';
 
-function AgregarCepa() {
-
+function EditarCepa() {
+    const location = useLocation();
     const navigate = useNavigate();
+
+    //obtener los datos de location
+    const { ID, Nombre, Origen, Medio } = location.state;
+    
     const nombre = localStorage.getItem('nombre');
     const email = localStorage.getItem('email');
     const avatar = localStorage.getItem('avatar');
@@ -48,7 +52,7 @@ function AgregarCepa() {
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
-            text: 'La cepa ha sido agregada exitosamente',
+            text: 'Se actualizó exitosamente',
             showConfirmButton: false,
             timer: 1500
         }).then(() => {
@@ -67,12 +71,12 @@ function AgregarCepa() {
                 </header>
                 <div className="containerAgregarCepas">
                     <div className="containerFormAddCepa">
-                        <h1 className="titleAddCepa">Agregar Cepa</h1>
+                        <h1 className="titleAddCepa">Editar Cepa</h1>
                         <p className="textAddCepa">Por favor ingresa la información</p>
                         <form className="formAddCepa" onSubmit={handleFormSubmit}>
                             <div className="containerInputAddCepa">
                                 <p className='textInput'>Especie</p>
-                                <input type="text" placeholder="Nombre de la cepa" className="inputAddCepa" />
+                                <input type="text" placeholder="Nombre de la cepa" className="inputAddCepa" value={Nombre}/>
                             </div>
                             <div className="containerInputAddCepa">
                                 <p className='textInput'>Origen de la cepa</p>
@@ -94,7 +98,7 @@ function AgregarCepa() {
                             </div>
                             <div className="containerBtnFormAddCepa">
                                 <button className="btnFormAddCepa" id='cancelar' onClick={regresar}>Cancelar</button>
-                                <button type="submit" className="btnFormAddCepa" id='aceptar'>Agregar Cepa</button>
+                                <button type="submit" className="btnFormAddCepa" id='aceptar'>Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -104,4 +108,4 @@ function AgregarCepa() {
     );
 }
 
-export default AgregarCepa;
+export default EditarCepa;

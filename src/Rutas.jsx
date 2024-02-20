@@ -8,6 +8,7 @@ import CodeVerify from "./Views/Cuenta/CodeEmail.jsx"
 import CompleteProfile from "./Views/Cuenta/CompleteProfile.jsx"
 import MisCepas from "./Views/MisCepas/MisCepas.jsx"
 import AgregarCepa from "./Views/MisCepas/AgregarCepa.jsx"
+import EditarCepa from "./Views/MisCepas/EditarCepa.jsx"
 
 function Rutas() {
   return (
@@ -21,6 +22,7 @@ function Rutas() {
         <Route path="/CompleteProfile" element={ <CompleteProfile /> } />
         <Route path="/MisCepas" element={ <MisCepas /> } />
         <Route path="/AgregarCepa" element={ <AgregarCepa /> } />
+        <Route path="/EditarCepa" element={ <EditarCepa /> } />
 
       </Routes>
     </div>

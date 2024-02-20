@@ -21,7 +21,8 @@ import TableCepasEdit from '../../Components/Table/TablaEdits/TableCepasEdit.jsx
 
 
 
-function MisCepas({datos}) {
+
+function MisCepas({ datos }) {
 
     const navigate = useNavigate();
 
@@ -44,6 +45,8 @@ function MisCepas({datos}) {
 
     }, [navigate]);
 
+
+
     return (
         <body className='bodyHome'>
             <nav className='navHome'>
@@ -51,11 +54,11 @@ function MisCepas({datos}) {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-                    <Header titulo= "Mis cepas" nombre={nombre} email={email} avatar={avatar} />
+                    <Header titulo="Mis cepas" nombre={nombre} email={email} avatar={avatar} />
                 </header>
                 <div className="containerMisCepas">
                     <div className="containerTableMisCepas">
-                        <TableCepasEdit data={datos}/>
+                        <TableCepasEdit data={datos} />
                     </div>
                 </div>
             </main>

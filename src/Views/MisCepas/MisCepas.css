@@ -1,60 +1,60 @@
+/*------------------------------------------------------------- Mis cepas */
 .containerMisCepas {
-    height:95%;
+    height: 95%;
     width: 100%;
     display: flex;
-   
-justify-content: center;
-align-items: center;
-
-
+    justify-content: center;
+    align-items: start;
     /* Add your background pattern here */
     background-color: #31313100;
     background-image: radial-gradient(rgba(0, 0, 0, 0.097) 2px, transparent 0);
     background-size: 30px 30px;
     background-position: -5px -5px
-  
 }
 
 
 .containerTableMisCepas {
+    margin-top: 1.5em;
+    width: 75%;
+    height: 65%;
     
-    width: 70%;
-    height: 60%;
-   
 }
-.iconTable{
+
+.iconTable {
     width: 20px;
     cursor: pointer;
     margin-right: 1.5em;
     transition: all 0.3s ease;
 }
-.iconTable:active{
+
+.iconTable:active {
     scale: 0.9;
-    
+
 }
 
 
+/**/
+/*------------------------------------------------------------- Agregar cepa */
 
-/*---------------agregar cepa */
-
-.containerAgregarCepas{
-    height:95%;
+.containerAgregarCepas {
+    height: 95%;
     width: 100%;
     display: flex;
-   
-justify-content: center;
-align-items: start;
+
+    justify-content: center;
+    align-items: start;
 
 
     /* Add your background pattern here */
     background-color: #31313100;
     background-image: radial-gradient(rgba(0, 0, 0, 0.097) 2px, transparent 0);
     background-size: 30px 30px;
-    
-    
-  
+
+
+
 }
-.containerFormAddCepa{
+
+.containerFormAddCepa {
     margin-top: 1em;
     width: 40%;
     height: auto;
@@ -64,9 +64,10 @@ align-items: start;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
-.titleAddCepa{
+
+.titleAddCepa {
     font-size: 23px;
     text-align: center;
     margin-top: 1em;
@@ -74,7 +75,8 @@ align-items: start;
     color: #1F3139;
     text-align: center;
 }
-.textAddCepa{
+
+.textAddCepa {
     text-align: center;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -82,25 +84,29 @@ align-items: start;
     margin-right: 1em;
     color: #929292;
 }
-.formAddCepa{
-    
+
+.formAddCepa {
+
     width: 70%;
 }
-.containerInputAddCepa{
+
+.containerInputAddCepa {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     width: 100%;
-    
+
 }
-.textInput{
+
+.textInput {
     color: #151717;
     font-weight: 600;
     margin-bottom: 0.5em;
 }
-.inputAddCepa{
+
+.inputAddCepa {
     background-color: transparent;
     border: 1px solid #E6E6E6;
     padding: 8px 0px 8px 0px;
@@ -111,19 +117,21 @@ align-items: start;
     font-weight: 300;
     border-radius: 10px;
 }
-.inputAddCepa:focus{
+
+.inputAddCepa:focus {
     outline: none;
     border: 2px solid #2D79F3;
 
 }
 
-.containerBtnFormAddCepa{
+.containerBtnFormAddCepa {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 1em;
 }
-.btnFormAddCepa{
+
+.btnFormAddCepa {
     background-color: #2d79f300;
     color: rgba(0, 0, 0, 0.643);
     border: 1px solid #00000046;
@@ -136,32 +144,33 @@ align-items: start;
     width: 40%;
 }
 
-#aceptar:hover{
+#aceptar:hover {
     background-color: #6AA33D;
     color: white;
     border: 1px solid #00000070;
-    
+
 }
-#cancelar:hover{
+
+#cancelar:hover {
     background-color: #a92020;
     color: white;
-    
+
 }
 
 
 
 
 
-@media only screen and (min-width: 1350px) {
+@media only screen and (min-width: 1361px) {
 
-  
-    .containerTableMisCepas{
+
+    .containerTableMisCepas {
         width: 50%;
         height: 50%;
-       
+
     }
 
-    .containerFormAddCepa{
+    .containerFormAddCepa {
 
         width: 30%;
         height: auto;
