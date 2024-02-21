@@ -1,0 +1,32 @@
+[
+    {
+        "ID": 1,
+        "Nombre": "Mi cultivo 1",
+        "Especie": "Chlorella vulgaris",
+        "Motivo": "Investigación"
+    },
+    {
+        "ID": 2,
+        "Nombre": "Mi cultivo 2",
+        "Especie": "Spirogyra sp.",
+        "Motivo": "Comercio"
+    },
+    {
+        "ID": 3,
+        "Nombre": "Mi cultivo 3",
+        "Especie": "Gymnodinium sp.",
+        "Motivo": "Comercio"
+    },
+    {
+        "ID": 4,
+        "Nombre": "Mi cultivo 4",
+        "Especie": "Putschia sp.",
+        "Motivo": "Investigación"
+    },
+    {
+        "ID": 5,
+        "Nombre": "Mi cultivo 5",
+        "Especie": "Vulgaris",
+        "Motivo": "Investigación"
+    }
+]

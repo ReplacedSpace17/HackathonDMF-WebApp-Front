@@ -26,7 +26,7 @@ function TableCultivos({ data }) {
                     <thead className='theadT2'>
                         <tr className='trT2'>
                             <th className='thdT2'>ID</th>
-                            <th className='thdT2'>Nombre</th>
+                            <th className='thdT2'>Nombre de cultivo</th>
                             <th className='thdT2'>Especie</th>
                             <th className='thdT2'>Motivo</th>
                         </tr>
@@ -36,8 +36,8 @@ function TableCultivos({ data }) {
                             <tr className='trT2' key={item.ID}>
                                 <td className='tdT2'>{item.ID}</td>
                                 <td className='tdT2'>{item.Nombre}</td>
-                                <td className='tdT2'>{item.Origen}</td>
-                                <td className='tdT2'>{item.Medio}</td>
+                                <td className='tdT2'>{item.Especie}</td>
+                                <td className='tdT2'>{item.Motivo}</td>
                             </tr>
                         ))}
                     </tbody>

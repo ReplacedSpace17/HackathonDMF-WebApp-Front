@@ -1,6 +1,7 @@
 
 //---------------------------------------------------- REACT ----------------------------------------------------//
 import datos from './tabla.json'
+import cultivosData from './tablaCultivos.json'
 import biomasaData from './biomasa.json'
 import './home.css'
 
@@ -26,6 +27,8 @@ import DonutChartComponent from '../../Components/Graphics/Pastel.jsx';
 
 import CardBottomCultivo from '../../Components/CardCultivos/CardBottomCultivo.jsx'
 import CardBottomParametros from '../../Components/CardCultivos/CardBottomParametros.jsx';
+
+
 
 function Home() {
 
@@ -89,7 +92,7 @@ function Home() {
                             <Table data={datos} />
                         </div>
                         <div className="Table">
-                            <TableCultivos data={datos} />
+                            <TableCultivos data={cultivosData} />
                         </div>
                         <div className="separator">
                         </div>
