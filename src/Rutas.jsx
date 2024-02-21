@@ -9,6 +9,8 @@ import CompleteProfile from "./Views/Cuenta/CompleteProfile.jsx"
 import MisCepas from "./Views/MisCepas/MisCepas.jsx"
 import AgregarCepa from "./Views/MisCepas/AgregarCepa.jsx"
 import EditarCepa from "./Views/MisCepas/EditarCepa.jsx"
+import MisCultivos from "./Views/MisCultivos/MisCultivos.jsx"
+
 
 function Rutas() {
   return (
@@ -23,6 +25,7 @@ function Rutas() {
         <Route path="/MisCepas" element={ <MisCepas /> } />
         <Route path="/AgregarCepa" element={ <AgregarCepa /> } />
         <Route path="/EditarCepa" element={ <EditarCepa /> } />
+        <Route path="/MisCultivos" element={ <MisCultivos /> } />
 
       </Routes>
     </div>

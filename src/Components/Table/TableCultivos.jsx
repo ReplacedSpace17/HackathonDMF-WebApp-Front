@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Tablecultivos.css';
+import { useNavigate } from 'react-router-dom';
 
 function TableCultivos({ data }) {
     const [searchTerm, setSearchTerm] = useState('');
@@ -8,11 +9,19 @@ function TableCultivos({ data }) {
     const filteredData = data.filter(item =>
         item.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    
+
+
+    const navigate = useNavigate();
+    
+    const goToCultivos= () => {
+        navigate('/MisCultivos', { state: { datos: cultivosData } });
+    };
 
     return (
         <div className="containerCardTable">
             <div className="elementsTopContainer">
-                <h1 className='TitleTable'>Mis cultivos</h1>
+                <h1 className='TitleTable' onClick={goToCultivos}>Mis cultivos</h1>
                 <input
                     type="text"
                     placeholder="Buscar por nombre"

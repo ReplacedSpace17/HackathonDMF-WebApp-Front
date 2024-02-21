@@ -4,7 +4,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import './MisCepas.css';
+
 //---------------------------------------------------- ASSETS ----------------------------------------------------//
 
 import foto from '../../assets/img.png'
@@ -17,7 +17,7 @@ import Header from '../../Components/Header/Header.jsx'
 import CardInfoTop from '../../Components/CardsInfo/cardTop.jsx'
 import Menu from '../../Components/Menu/Menu.jsx'
 
-import TableCepasEdit from '../../Components/Table/TablaEdits/TableCepasEdit.jsx'
+import TableCultivosEdit from '../../Components/Table/TablaEdits/TableCultivosEdit.jsx'
 
 
 
@@ -54,11 +54,11 @@ function MisCultivos({ datos }) {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-                    <Header titulo="Mis cepas" nombre={nombre} email={email} avatar={avatar} />
+                    <Header titulo="Mis cultivos" nombre={nombre} email={email} avatar={avatar} />
                 </header>
                 <div className="containerMisCepas">
                     <div className="containerTableMisCepas">
-                        <TableCepasEdit data={datos} />
+                    <TableCultivosEdit data={datos} />
                     </div>
                 </div>
             </main>
