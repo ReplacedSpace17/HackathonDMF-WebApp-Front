@@ -68,13 +68,14 @@ border: 1px solid var(--contorno);
     padding-right: 1.5em; /* Ajusta este valor según tus preferencias */
 }
 
-.tableT1 {
+.tableT1, .tableT2 {
     width: 100%;
     border-collapse: collapse;
     color: #373737;
     font-size: 0.938em;
     transition: all 0.3s ease-in-out;
     background-color: #E9FBE8;
+    
     
 }
 
@@ -84,17 +85,19 @@ border: 1px solid var(--contorno);
     background-color: #ffffff;
     color: #7D7D7D;
     margin: 1px;
+    vertical-align: middle;
     
 }
 
 
 .thdT1,
-.tdT1 {
+.tdT1, .thdT2, .tdT2 {
     padding: 0.5em;
     text-align: left;
+    
 }
 
-.trT1 {
+.trT1{
     color: #373737;
     overflow: hidden;
     border: 0.7em solid #ffffff;
@@ -105,7 +108,10 @@ border: 1px solid var(--contorno);
     background-color: #c3eec1;
 }
 
+.iconTable{
+height: 100%;
 
+}
 
 
 .buttonsBottom{

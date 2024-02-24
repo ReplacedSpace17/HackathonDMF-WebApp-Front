@@ -15,8 +15,9 @@ function TableCultivos({ data }) {
     const navigate = useNavigate();
     
     const goToCultivos= () => {
-        navigate('/MisCultivos', { state: { datos: cultivosData } });
+        navigate('/MisCultivos', { state: { datos: data } });
     };
+  
 
     return (
         <div className="containerCardTable">

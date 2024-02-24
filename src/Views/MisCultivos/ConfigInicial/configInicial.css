@@ -1,0 +1,212 @@
+/*------------------------ ------------------------ Screen Initial*/
+.containerSettingsInitial {
+    margin-top: 1em;
+    width: 60%;
+    height: auto;
+    border: 1px solid var(--contorno);
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 650px;
+}
+
+.containerInfoCenterSettings {
+
+    width: 90%;
+    margin-bottom: 1em;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+}
+
+.infoLeft,
+.infoLeftBottom {
+
+    width: 55%;
+}
+
+.infoRight,
+.infoRightBottom {
+
+    width: 45%;
+    display: flex;
+    justify-content: end;
+}
+
+.imgRobot {}
+
+.containerInfoBottomSettings {
+
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+}
+
+.textInfoLeftCenter,
+.textInfoLeftBottom {
+    color: #1F1F1F;
+}
+
+
+/*------------------------ ---------------------------------------------------- Screen Luz*/
+.containerSettingsLuz {
+    margin-top: 1em;
+    width: 40%;
+    height: auto;
+    border: 1px solid var(--contorno);
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 450px;
+}
+.containerLuzSettingsCenter{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.ValueLight{
+    color: #1F3139;
+    font-size: 50px;
+    margin: 0;
+}
+#luzIntensity{
+    width: 60%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    
+}
+
+/* Estilo base del input de rango */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    background: #E8E8E8;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 20px;
+  }
+  
+  /* Estilo del control deslizante */
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  
+  /* Estilo del control deslizante en Firefox */
+  input[type=range]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  
+  /* Cambio de estilo al pasar el mouse */
+  input[type=range]:hover {
+    opacity: 1;
+  }
+  
+  /* Cambio de estilo al enfocar */
+  input[type=range]:focus {
+    outline: none;
+  }
+  
+  /* Cambio de estilo al arrastrar el control deslizante */
+  input[type=range]::-webkit-slider-thumb:hover {
+    background: #45a049;
+  }
+  
+  /* Cambio de estilo al arrastrar el control deslizante en Firefox */
+  input[type=range]::-moz-range-thumb:hover {
+    background: #45a049;
+  }
+
+  /* Estilo del punto que marca el valor seleccionado hacia atrás */
+input[type=range]::-moz-range-progress {
+    background-color: #55C2FF; /* Color azul */
+    height: 15px;
+    border-radius: 20px
+  }
+  
+  input[type=range]::-webkit-progress-value {
+    background-color: #55C2FF; /* Color azul */
+  }
+  
+  
+.imgLuzSettings{
+    margin-top: 2em;
+    margin-bottom: 2.5em;
+    width: 100px;
+}
+
+.containerLuzBottomSettings{
+    
+    width: 90%;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1em;
+}
+
+#aceptar{
+    max-width: 150px;
+}
+
+
+/*------------------------ ---------------------------------------------------- Screen Ciclo de luz*/
+.imgCicloSettings{
+    width: 150px;
+    margin-bottom: 2em;
+}
+.containerCicloBottomSettings{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+/*------------------------ ---------------------------------------------------- Screen Ph*/
+#phInput{
+    width: 80%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}
+/*------------------------ ---------------------------------------------------- Screen Temperatura*/
+
+@media only screen and (min-width: 1367px) {
+
+    /*------------------------ Screen Initial*/
+    .containerSettingsInitial {
+        min-width: 700px;
+        max-width: 750px;
+        width: 50%;
+        height: auto;
+        background-color: white;
+    }
+    .containerSettingsLuz {
+        margin-top: 1em;
+        width: 40%;
+        height: auto;
+        border: 1px solid var(--contorno);
+        border-radius: 20px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 450px;
+        max-width: 500px;
+    }
+}

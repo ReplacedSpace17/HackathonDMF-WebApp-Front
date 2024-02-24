@@ -10,7 +10,13 @@ import MisCepas from "./Views/MisCepas/MisCepas.jsx"
 import AgregarCepa from "./Views/MisCepas/AgregarCepa.jsx"
 import EditarCepa from "./Views/MisCepas/EditarCepa.jsx"
 import MisCultivos from "./Views/MisCultivos/MisCultivos.jsx"
+import AgregarCultivo from "./Views/MisCultivos/AgregarCultivo.jsx"
 
+import ScreenInicio from "./Views/MisCultivos/ConfigInicial/ScreenInicio.jsx"
+import ScreenLuz from "./Views/MisCultivos/ConfigInicial/ScreenLuz.jsx"
+import ScreenCicloLuzConfig from "./Views/MisCultivos/ConfigInicial/ScreenCicloLuz.jsx"
+import ScreenConfigPh from "./Views/MisCultivos/ConfigInicial/ScreenPhConfig.jsx"
+import ScreenConfigTemp from "./Views/MisCultivos/ConfigInicial/ScreenTempConfig.jsx"
 
 function Rutas() {
   return (
@@ -26,6 +32,13 @@ function Rutas() {
         <Route path="/AgregarCepa" element={ <AgregarCepa /> } />
         <Route path="/EditarCepa" element={ <EditarCepa /> } />
         <Route path="/MisCultivos" element={ <MisCultivos /> } />
+        <Route path="/AgregarCultivo" element={ <AgregarCultivo /> } />
+
+        <Route path="/Settings/Introduction" element={ <ScreenInicio /> } />
+        <Route path="/Settings/Light" element={ <ScreenLuz /> } />
+        <Route path="/Settings/LightCycle" element={ <ScreenCicloLuzConfig /> } />
+        <Route path="/Settings/Ph" element={ <ScreenConfigPh /> } />
+        <Route path="/Settings/Temperature" element={ <ScreenConfigTemp /> } />
 
       </Routes>
     </div>

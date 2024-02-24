@@ -98,6 +98,7 @@ border: 1px solid var(--contorno);
     color: #373737;
     overflow: hidden;
     border: 0.7em solid #ffffff;
+    align-items: center;
     
     
 }
@@ -106,3 +107,23 @@ border: 1px solid var(--contorno);
 }
 
 
+
+
+
+.tdT1 {
+    vertical-align: middle; /* Alinea verticalmente el contenido de las celdas */
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente los iconos al centro */
+    align-items: center; /* Alinea verticalmente los iconos al centro */
+    height: 100%; /* Establece la altura del contenedor para que los íconos se alineen correctamente */
+}
+
+.iconTable {
+    cursor: pointer;
+    margin-right: 5px; /* Ajusta el margen derecho si es necesario */
+    width: 20px; /* Ajusta el ancho si es necesario */
+    height: 20px; /* Ajusta la altura si es necesario */
+}

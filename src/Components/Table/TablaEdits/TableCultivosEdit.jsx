@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import data from '../../../Views/Home/tablaCultivos.json';
 import editIcon from '../../../assets/Components/Icons/edit.svg';
 import deleteIcon from '../../../assets/Components/Icons/delete.svg';
+import settingsIcon from '../../../assets/Components/Icons/ajustes.svg';
 
 import Swal from 'sweetalert2';
 
@@ -19,11 +20,11 @@ function TableCultivosEdit() {
     const regresar = () => {
         navigate('/Home');
     };
-    const agregarCepa = () => {
-        navigate('/AgregarCepa');
+    const agregarCultivo = () => {
+        navigate('/AgregarCultivo');
     };
 
-  
+
     const deleteCepa = (id) => {
         //alerta de confirmacion
         Swal.fire({
@@ -44,13 +45,13 @@ function TableCultivosEdit() {
                     'La cepa ha sido eliminada.',
                     'success'
                 )
-                
+
             }
         })
     };
 
-    const editCepa = (ID, Nombre, Origen, medio ) => {
-        navigate('/EditarCepa' , {state: {ID, Nombre, Origen, medio}}); ;
+    const editCepa = (ID, Nombre, Origen, medio) => {
+        navigate('/EditarCepa', { state: { ID, Nombre, Origen, medio } });;
 
     };
 
@@ -68,7 +69,7 @@ function TableCultivosEdit() {
                 />
             </div>
             <div className="containerTable">
-            <table className='tableT2'>
+                <table className='tableT2'>
                     <thead className='theadT2'>
                         <tr className='trT2'>
                             <th className='thdT2'>ID</th>
@@ -85,8 +86,15 @@ function TableCultivosEdit() {
                                 <td className='tdT2'>{item.Nombre}</td>
                                 <td className='tdT2'>{item.Especie}</td>
                                 <td className='tdT2'>{item.Motivo}</td>
-                                <img src={editIcon} onClick={()=> editCepa(item.ID, item.Nombre, item.Especie, item.Motivo)} className='iconTable'/>
-                                <img src={deleteIcon} onClick={() => deleteCepa(item.ID)} className='iconTable'/>
+                                <td className='tdT1'>
+                                    <div className="iconContainer">
+                                        <img src={settingsIcon} className='iconTable' />
+                                        <img src={editIcon} onClick={() => editCepa(item.ID, item.Nombre, item.Origen, item.Medio)} className='iconTable' />
+                                        <img src={deleteIcon} onClick={() => deleteCepa(item.ID)} className='iconTable' />
+
+                                    </div>
+                                </td>
+
                             </tr>
                         ))}
                     </tbody>
@@ -94,7 +102,7 @@ function TableCultivosEdit() {
             </div>
             <div className="buttonsBottom">
                 <button className="buttonTable" onClick={regresar}>Regresar</button>
-                <button className="buttonTable" onClick={agregarCepa}>Agregar nueva</button>
+                <button className="buttonTable" onClick={agregarCultivo}>Crear nuevo</button>
             </div>
         </div>
     );
