@@ -28,7 +28,7 @@ function TableCultivosEdit() {
     const deleteCepa = (id) => {
         //alerta de confirmacion
         Swal.fire({
-            title: '¿Estás seguro de eliminar la cepa?',
+            title: '¿Estás seguro de eliminar el cultivo?',
             text: "No podrás revertir esto!",
             icon: 'warning',
             showCancelButton: true,
@@ -50,8 +50,8 @@ function TableCultivosEdit() {
         })
     };
 
-    const editCepa = (ID, Nombre, Origen, medio) => {
-        navigate('/EditarCepa', { state: { ID, Nombre, Origen, medio } });;
+    const editCepa = (ID, Nombre, Especie, Motivo) => {
+        navigate('/EditarCultivo', { state: { ID, Nombre, Especie, Motivo } });;
 
     };
 
@@ -89,7 +89,7 @@ function TableCultivosEdit() {
                                 <td className='tdT1'>
                                     <div className="iconContainer">
                                         <img src={settingsIcon} className='iconTable' />
-                                        <img src={editIcon} onClick={() => editCepa(item.ID, item.Nombre, item.Origen, item.Medio)} className='iconTable' />
+                                        <img src={editIcon} onClick={() => editCepa(item.ID, item.Nombre, item.Especie, item.Motivo)} className='iconTable' />
                                         <img src={deleteIcon} onClick={() => deleteCepa(item.ID)} className='iconTable' />
 
                                     </div>

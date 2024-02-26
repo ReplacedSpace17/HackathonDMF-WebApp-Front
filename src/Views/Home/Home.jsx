@@ -60,7 +60,7 @@ function Home() {
             </nav>
             <main className='mainHome'>
                 <header className='headerHome'>
-                    <Header titulo= "Mis cultivos" nombre={nombre} email={email} avatar={avatar} />
+                    <Header titulo= "Inicio" nombre={nombre} email={email} avatar={avatar} />
                 </header>
                 <div className="containerHome">
                     <div className="sectionLeft">

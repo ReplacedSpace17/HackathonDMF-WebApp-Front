@@ -11,6 +11,7 @@ import AgregarCepa from "./Views/MisCepas/AgregarCepa.jsx"
 import EditarCepa from "./Views/MisCepas/EditarCepa.jsx"
 import MisCultivos from "./Views/MisCultivos/MisCultivos.jsx"
 import AgregarCultivo from "./Views/MisCultivos/AgregarCultivo.jsx"
+import EditarCultivo from "./Views/MisCultivos/EditarCultivo.jsx"
 
 import ScreenInicio from "./Views/MisCultivos/ConfigInicial/ScreenInicio.jsx"
 import ScreenLuz from "./Views/MisCultivos/ConfigInicial/ScreenLuz.jsx"
@@ -33,6 +34,7 @@ function Rutas() {
         <Route path="/EditarCepa" element={ <EditarCepa /> } />
         <Route path="/MisCultivos" element={ <MisCultivos /> } />
         <Route path="/AgregarCultivo" element={ <AgregarCultivo /> } />
+        <Route path="/EditarCultivo" element={ <EditarCultivo /> } />
 
         <Route path="/Settings/Introduction" element={ <ScreenInicio /> } />
         <Route path="/Settings/Light" element={ <ScreenLuz /> } />
