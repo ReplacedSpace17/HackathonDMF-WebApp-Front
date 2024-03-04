@@ -56,7 +56,7 @@ function Login() {
           title: 'Error!',
           text: 'Por favor llena todos los campos',
           icon: 'error',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Aceptar'
         });
         return;
       }
@@ -73,6 +73,7 @@ function Login() {
         localStorage.setItem('email', response.data.email);
         localStorage.setItem('nombre', response.data.nombre);
         localStorage.setItem('avatar', response.data.avatar);
+        localStorage.setItem('uid', response.data.uid);
         // Redirigir a la página de inicio
         navigate('/Home');
       }

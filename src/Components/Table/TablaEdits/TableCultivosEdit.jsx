@@ -7,14 +7,16 @@ import deleteIcon from '../../../assets/Components/Icons/delete.svg';
 import settingsIcon from '../../../assets/Components/Icons/ajustes.svg';
 
 import Swal from 'sweetalert2';
+import backenURL from '../../../backend';
+import axios from 'axios';
 
-function TableCultivosEdit() {
+function TableCultivosEdit( {data}) {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
     // Filtrar los datos por el nombre
     const filteredData = data.filter(item =>
-        item.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
+        item.nombre.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const regresar = () => {
@@ -25,7 +27,52 @@ function TableCultivosEdit() {
     };
 
 
-    const deleteCepa = (id) => {
+    const solicitudDeleteBackend = async (id_cultivo) => {
+        try {
+            const response = await axios.delete(backenURL + '/api/cultivos/' + id_cultivo);
+            // Verificar el código de estado de la respuesta
+            if (response.status === 200) {
+                //Mostrar un swal para indicar que la cepa ha sido agregada exitosamente y despues redirigir al usuario a la vista de MisCepas
+                Swal.fire(
+                    'Eliminada!',
+                    'El cultivo ha sido eliminado.',
+                    'success'
+                ).then(() => {
+                    //recargar la pagina
+                    window.location.reload();
+                });
+            }
+        } catch (error) {
+            // Error en la solicitud
+            if (error.response) {
+                // El servidor ha respondido con un código de estado fuera del rango 2xx
+                // Aquí puedes manejar diferentes códigos de estado de error
+                if (error.response.status === 401) {
+                    // Lógica para el caso de error 400
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Las credenciales son inválidas',
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    });
+                } else {
+                    // Otros códigos de estado de error
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Error en la solicitud',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    });
+                }
+            } else {
+                // Error sin respuesta del servidor
+                console.error('Error al realizar la petición:', error);
+                // Manejo de errores, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            }
+        }
+    };
+    
+    const deleteCultivo = (id) => {
         //alerta de confirmacion
         Swal.fire({
             title: '¿Estás seguro de eliminar el cultivo?',
@@ -37,21 +84,15 @@ function TableCultivosEdit() {
             confirmButtonText: 'Sí, eliminarla!'
         }).then((result) => {
             if (result.isConfirmed) {
-
-                //logica para eliminar la cepa
-
-                Swal.fire(
-                    'Eliminada!',
-                    'La cepa ha sido eliminada.',
-                    'success'
-                )
+                solicitudDeleteBackend(id);
 
             }
         })
     };
 
-    const editCepa = (ID, Nombre, Especie, Motivo) => {
-        navigate('/EditarCultivo', { state: { ID, Nombre, Especie, Motivo } });;
+    //item.id, item.nombre, item.nombre_cepa, item.motivo, item.cepa_id
+    const editCultivo = (ID, Nombre, Especie, Motivo, CepaID) => {
+        navigate('/EditarCultivo', { state: { ID, Nombre, Especie, Motivo, CepaID } });
 
     };
 
@@ -80,17 +121,17 @@ function TableCultivosEdit() {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData.map((item) => (
-                            <tr className='trT2' key={item.ID}>
-                                <td className='tdT2'>{item.ID}</td>
-                                <td className='tdT2'>{item.Nombre}</td>
-                                <td className='tdT2'>{item.Especie}</td>
-                                <td className='tdT2'>{item.Motivo}</td>
+                        {filteredData.map((item, index) => (
+                            <tr className='trT2' key={item.id}>
+                                <td className='tdT2'>{index + 1 }</td>
+                                <td className='tdT2'>{item.nombre}</td>
+                                <td className='tdT2'>{item.nombre_cepa}</td>
+                                <td className='tdT2'>{item.motivo}</td>
                                 <td className='tdT1'>
                                     <div className="iconContainer">
                                         <img src={settingsIcon} className='iconTable' />
-                                        <img src={editIcon} onClick={() => editCepa(item.ID, item.Nombre, item.Especie, item.Motivo)} className='iconTable' />
-                                        <img src={deleteIcon} onClick={() => deleteCepa(item.ID)} className='iconTable' />
+                                        <img src={editIcon} onClick={() => editCultivo(item.id, item.nombre, item.nombre_cepa, item.motivo, item.cepa_id)} className='iconTable' />
+                                        <img src={deleteIcon} onClick={() => deleteCultivo(item.id)} className='iconTable' />
 
                                     </div>
                                 </td>

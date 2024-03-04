@@ -38,18 +38,19 @@ function Home() {
     const email = localStorage.getItem('email');
     const avatar = localStorage.getItem('avatar');
     const token = localStorage.getItem('token');
+    const uid = localStorage.getItem('uid');    
 
     useEffect(() => {
 
-        //const token = localStorage.getItem('token');
+        console.log(uid);
 
-        /*
+        
                 if (!token) {
                     // Si no hay token, redirigir al usuario a la página de inicio de sesión
                     navigate('/Login');
                 }
                 // Si no hay token, redirigir al usuario a la página de inicio de sesión
-        */
+        
 
     }, [navigate]);
 
