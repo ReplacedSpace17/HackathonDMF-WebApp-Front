@@ -28,7 +28,7 @@ import DonutChartComponent from '../../Components/Graphics/Pastel.jsx';
 import CardBottomCultivo from '../../Components/CardCultivos/CardBottomCultivo.jsx'
 import CardBottomParametros from '../../Components/CardCultivos/CardBottomParametros.jsx';
 
-
+import axios from 'axios';
 
 function Home() {
 
