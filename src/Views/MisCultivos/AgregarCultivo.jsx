@@ -13,7 +13,15 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import backenURL from '../../backend.js';
 
+// import { app } from '../../firebase.js'; // Importa las funciones necesarias de firebase.js
+import { getDatabase, ref, set } from 'firebase/database';
+
+
 function AgregarCultivo() {
+
+    //const database = app.database();
+
+
     const [cepas, setCepas] = useState([]);
 
     const navigate = useNavigate();
@@ -61,12 +69,47 @@ function AgregarCultivo() {
         console.log(formData);
 
         InsertarNuevoCultivo(formData);
-        
+
     };
 
     const regresar = () => {
         navigate('/MisCultivos');
     };
+
+
+    const createBucket = () => {
+        const FID = "cdcsse3"; // ID del usuario
+        // Crear una referencia a la ubicación específica del cultivo en la base de datos de Firebase
+      
+
+// Obtener una referencia a la base de datos de Firebase
+const db = getDatabase();
+
+// Referencia al nodo específico en la base de datos donde deseas escribir los datos
+const cultivoRef = ref(db, 'cultivos/' + FID);
+
+// Datos que deseas almacenar en el nodo del cultivo
+const cultivoData = {
+    dato1: 'valor1',
+    dato2: 'valor2',
+    // Puedes agregar más datos según sea necesario
+};
+
+// Intentar establecer los datos en la base de datos
+set(cultivoRef, cultivoData)
+    .then(() => {
+        console.log('Datos del cultivo escritos correctamente.');
+    })
+    .catch((error) => {
+        console.error('Error al escribir datos del cultivo:', error);
+        // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+    });
+
+
+    };
+    
+
+
 
     const InsertarNuevoCultivo = async (formData) => {
         try {
@@ -83,8 +126,13 @@ function AgregarCultivo() {
                 }).then(() => {
                     //obtener el response.data.cultivo_id y redirigir al usuario a la vista de MisCepas
                     const idCultivo = response.data.cultivo_id;
-                    
-                    console.log(idCultivo);
+                    // Establecer el ID del cultivo en el almacenamiento local
+                    const nombreCultivo = formData.nombre;
+                    localStorage.setItem('newCultivoId', idCultivo);
+                    localStorage.setItem('newCultivoName', nombreCultivo);
+                    //crear el bucket en firebase
+                    //createBucket(uid, idCultivo);
+                    //console.log(idCultivo);
                     //crear un bucken en firebase para el cultivo con el id
                     navigate('/Settings/Introduction');
                 });
@@ -192,8 +240,10 @@ function AgregarCultivo() {
                             <div className="containerBtnFormAddCepa">
                                 <button className="btnFormAddCepa" id='cancelar' onClick={regresar}>Cancelar</button>
                                 <button type="submit" className="btnFormAddCepa" id='aceptar'>Crear</button>
+                                
                             </div>
                         </form>
+                        <button onClick={createBucket} className="btnFormAddCepa" id='aceptar'>firebase</button>
                     </div>
                 </div>
             </main>
@@ -202,3 +252,107 @@ function AgregarCultivo() {
 }
 
 export default AgregarCultivo;
+
+
+/*
+
+no sirve
+
+
+
+ const createBucket = (UID, FID) => {
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+    
+        // Referencia al nodo del usuario utilizando el UID proporcionado
+        const usuarioRef = ref(db, 'BioharvestApp/Usuarios/'+UID);
+    
+        // Datos del fotobiorreactor
+        const fotobiorreactorData = {
+            Informacion: {
+                Nombre: "MiPrimerFotobiorreactor",
+                Especie: "Spirulina"
+            },
+            Control_IA: false,
+            Parameters: {
+                CicloDiaNoche: false,
+                LightIntensity: 0,
+                Ph: 0,
+                Temperature: 0,
+            },
+            Sensors: {
+                ldr: 0,
+                ph: 0,
+                temperature: 0
+            },
+            Switches: {
+                Bomba: false,
+                Luz: false,
+                Calentador: false
+            }
+        };
+    
+        // Referencia al nodo de fotobiorreactores utilizando el FID proporcionado
+        const fotobiorreactorRef = ref(usuarioRef, 'Fotobiorreactores/'+FID);
+    
+        // Intentar establecer los datos del fotobiorreactor en la base de datos
+        set(fotobiorreactorRef, fotobiorreactorData)
+            .then(() => {
+                console.log('Datos del fotobiorreactor escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del fotobiorreactor:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    [
+    BioharvestApp: {
+        Usuarios: {
+            UID:{
+                Nombre: "Nombre",
+                Email: "Email",
+                Fotobiorreactores: {
+                    FID:{
+                        Informacion:{
+                            Nombre: "MiPriemrFotobiorreactor",
+                            Especie: "Spirullina"
+                        },
+                        Control_IA: false,
+                        Parameters:{
+                            CicloDiaNoche: false,
+                            LightIntensity: 0,
+                            Ph: 0,
+                            Temperature: 0,
+                        },
+                        Sensors:{
+                            ldr: 0,
+                            ph: 0,
+                            temperature: 0
+                        },
+                        Switches:{
+                            Bomba: false,
+                            Luz: false,
+                            Calentador: false
+                        }
+                    }
+                }
+            }
+        }
+    }
+]
+*/
