@@ -18,7 +18,8 @@ function ScreenInicio() {
     const email = localStorage.getItem('email');
     const avatar = localStorage.getItem('avatar');
     const token = localStorage.getItem('token');
-
+    const uid = localStorage.getItem('uid');
+    const cultivo_id = localStorage.getItem('newCultivoId');
     // Definimos los estados para los valores seleccionados
     const [origen, setOrigen] = useState('');
     const [tipo, setTipo] = useState('');
@@ -84,7 +85,7 @@ function ScreenInicio() {
                         </div>
                         <div className="containerInfoBottomSettings">
                             <div className="infoLeftBottom">
-                                <p className="textInfoLeftBottom">CID: 23234324</p>
+                                <p className="textInfoLeftBottom">CID:{cultivo_id}</p>
 
                             </div>
                             <div className="infoRightBottom">
