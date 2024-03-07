@@ -16,6 +16,9 @@ import video from '../../assets/Videos/videoLogin.mp4';
 import logo from '../../assets/logo_black.png';
 import './CompleteProfile.css';
 
+import { getDatabase, ref, set, push } from 'firebase/database';
+
+
 /*------------------------------------ COMPONENTE ------------------------------------*/
 
 function CompleteProfile() {
@@ -25,6 +28,9 @@ function CompleteProfile() {
   const email = location.state?.email;
   const [avatarName, setAvatar] = useState('');
   const [birthdate, setBirthdate] = useState(''); // Agrega el estado para la fecha de nacimiento
+
+ 
+
 
   const asideAnimation = useSpring({
     from: { opacity: 0, transform: 'translateX(+100%)' },
@@ -74,6 +80,9 @@ function CompleteProfile() {
       const { status, data } = response;
 
       if (status === 200) {
+
+        //Agregar el user a firebase
+        AddUserFirebase(uid, email);
         //necesito un swal que cuando de clic en aceptar me redireccione a la pagina de home
         Swal.fire({
           icon: 'success',
@@ -93,6 +102,26 @@ function CompleteProfile() {
     }
   };
 
+  const AddUserFirebase = (id, email) => {
+    const db = getDatabase();
+        // Referencia al nodo específico en la base de datos donde deseas escribir los datos
+        const usuariosRef = ref(db, 'BioharvestApp/Usuarios/' + id);
+        // Datos que deseas almacenar en el nodo del cultivo
+        const usuariosData = {
+            UserEmail: email,
+        };
+
+        // Intentar establecer los datos en la base de datos
+        set(usuariosRef, usuariosData)
+            .then(() => {
+                console.log('Datos escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+  };
+
   /*-------------------------------------- RENDER COMPONENT -------------------------------*/
 
   return (
@@ -100,6 +129,7 @@ function CompleteProfile() {
       <animated.aside style={asideAnimation} className="aside-container">
         <img src={logo} alt="Logo" className="logoLogin" />
         <p className='parrafo'>Para finalizar completa tu perfil</p>
+       
         <div className="containerTitulo">
           <h2 className='TITLE-Login'>Completa tu perfil</h2>
         </div>

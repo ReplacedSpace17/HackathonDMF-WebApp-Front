@@ -11,6 +11,9 @@ import Swal from 'sweetalert2';
 import './configInicial.css';
 import luz from '../../../assets/Components/ConfigInitial/luz.png';
 
+import { getDatabase, ref, set, push } from 'firebase/database';
+
+
 function ScreenLuzConfig() {
 
     const navigate = useNavigate();
@@ -18,6 +21,9 @@ function ScreenLuzConfig() {
     const email = localStorage.getItem('email');
     const avatar = localStorage.getItem('avatar');
     const token = localStorage.getItem('token');
+
+    const uid = localStorage.getItem('uid');
+    const cultivo_id = localStorage.getItem('newCultivoId');
 
     // Definimos los estados para los valores seleccionados
     const [origen, setOrigen] = useState('');
@@ -50,6 +56,7 @@ function ScreenLuzConfig() {
     };
 
     const goToCicloLuz = () => {
+        setLuzParameters(uid, cultivo_id, valorLuz);
         navigate('/Settings/LightCycle');
     };
 
@@ -67,6 +74,30 @@ function ScreenLuzConfig() {
         }).then(() => {
             navigate('/MisCepas');
         });
+    };
+
+    const setLuzParameters = (UID, CID, valor) => {
+
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+        // Referencia al nodo específico en la base de datos donde deseas escribir los datos
+        const LuzParameterRef = ref(db, 'BioharvestApp/Usuarios/' + UID +  '/Fotobiorreactores/'+ CID+'/Parameters/LightIntensity');
+        // Datos que deseas almacenar en el nodo del cultivo
+        const LuzData = {
+            LightIntensity: valor
+        };
+
+        // Intentar establecer los datos en la base de datos
+        set(LuzParameterRef, valor)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+
+            //createFotoBiorreactor(UID, "sxnxj");
     };
 
     return (

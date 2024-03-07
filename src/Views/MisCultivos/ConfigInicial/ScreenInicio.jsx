@@ -11,6 +11,9 @@ import Swal from 'sweetalert2';
 import './configInicial.css';
 import robot from '../../../assets/Components/ConfigInitial/robot.png';
 
+import { getDatabase, ref, set, push } from 'firebase/database';
+
+
 function ScreenInicio() {
 
     const navigate = useNavigate();
@@ -18,6 +21,7 @@ function ScreenInicio() {
     const email = localStorage.getItem('email');
     const avatar = localStorage.getItem('avatar');
     const token = localStorage.getItem('token');
+
     const uid = localStorage.getItem('uid');
     const cultivo_id = localStorage.getItem('newCultivoId');
     // Definimos los estados para los valores seleccionados
@@ -42,6 +46,7 @@ function ScreenInicio() {
     };
 
     const goToLuz = () => {
+        setControlIA(uid, cultivo_id, false);
         navigate('/Settings/Light');
     };
     const submitBackend = () => {
@@ -58,6 +63,30 @@ function ScreenInicio() {
         }).then(() => {
             navigate('/MisCepas');
         });
+    };
+
+    const setControlIA = (UID, CID, valor) => {
+
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+        // Referencia al nodo específico en la base de datos donde deseas escribir los datos
+        const controlIA = ref(db, 'BioharvestApp/Usuarios/' + UID +  '/Fotobiorreactores/'+ CID+'/Control_IA');
+        // Datos que deseas almacenar en el nodo del cultivo
+        const controlIAData = {
+            Control_IA: valor
+        };
+
+        // Intentar establecer los datos en la base de datos
+        set(controlIA, valor)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+
+            //createFotoBiorreactor(UID, "sxnxj");
     };
 
     return (

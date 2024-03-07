@@ -14,7 +14,7 @@ import axios from 'axios';
 import backenURL from '../../backend.js';
 
 // import { app } from '../../firebase.js'; // Importa las funciones necesarias de firebase.js
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set, push } from 'firebase/database';
 
 
 function AgregarCultivo() {
@@ -35,11 +35,12 @@ function AgregarCultivo() {
     const [tipo, setTipo] = useState('');
 
     useEffect(() => {
+        /*
         if (!token) {
             // Si no hay token, redirigir al usuario a la página de inicio de sesión
             navigate('/Login');
         }
-
+*/
         obtenerCepas(uid);
         // Aquí puedes colocar cualquier lógica que necesites
         // Por ejemplo, verificar si el usuario tiene permisos para estar en esta vista
@@ -77,39 +78,34 @@ function AgregarCultivo() {
     };
 
 
-    const createBucket = () => {
-        const FID = "cdcsse3"; // ID del usuario
-        // Crear una referencia a la ubicación específica del cultivo en la base de datos de Firebase
-      
+    const createCultivoFirebase = (UID, CID, nombreCultivo) => {
+        
+        
 
-// Obtener una referencia a la base de datos de Firebase
-const db = getDatabase();
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+        // Referencia al nodo específico en la base de datos donde deseas escribir los datos
+        const cultivoRef = ref(db, 'BioharvestApp/Usuarios/' + UID +  '/Fotobiorreactores/'+ CID);
+        // Datos que deseas almacenar en el nodo del cultivo
+        const cultivoData = {
+            NombreCultivo: nombreCultivo
+        };
 
-// Referencia al nodo específico en la base de datos donde deseas escribir los datos
-const cultivoRef = ref(db, 'cultivos/' + FID);
+        // Intentar establecer los datos en la base de datos
+        set(cultivoRef, cultivoData)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
 
-// Datos que deseas almacenar en el nodo del cultivo
-const cultivoData = {
-    dato1: 'valor1',
-    dato2: 'valor2',
-    // Puedes agregar más datos según sea necesario
-};
-
-// Intentar establecer los datos en la base de datos
-set(cultivoRef, cultivoData)
-    .then(() => {
-        console.log('Datos del cultivo escritos correctamente.');
-    })
-    .catch((error) => {
-        console.error('Error al escribir datos del cultivo:', error);
-        // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
-    });
-
-
+            //createFotoBiorreactor(UID, "sxnxj");
     };
-    
 
 
+   
 
     const InsertarNuevoCultivo = async (formData) => {
         try {
@@ -128,12 +124,14 @@ set(cultivoRef, cultivoData)
                     const idCultivo = response.data.cultivo_id;
                     // Establecer el ID del cultivo en el almacenamiento local
                     const nombreCultivo = formData.nombre;
+                    
                     localStorage.setItem('newCultivoId', idCultivo);
                     localStorage.setItem('newCultivoName', nombreCultivo);
                     //crear el bucket en firebase
                     //createBucket(uid, idCultivo);
                     //console.log(idCultivo);
                     //crear un bucken en firebase para el cultivo con el id
+                    createCultivoFirebase(uid, idCultivo, nombreCultivo);
                     navigate('/Settings/Introduction');
                 });
             }
@@ -211,6 +209,7 @@ set(cultivoRef, cultivoData)
                     <Header titulo="Mis cultivos" nombre={nombre} email={email} avatar={avatar} />
                 </header>
                 <div className="containerAgregarCepas">
+                    
                     <div className="containerFormAddCepa">
                         <h1 className="titleAddCepa">Crear nuevo cultivo</h1>
                         <p className="textAddCepa">Por favor ingresa la información</p>
@@ -240,10 +239,10 @@ set(cultivoRef, cultivoData)
                             <div className="containerBtnFormAddCepa">
                                 <button className="btnFormAddCepa" id='cancelar' onClick={regresar}>Cancelar</button>
                                 <button type="submit" className="btnFormAddCepa" id='aceptar'>Crear</button>
-                                
+
                             </div>
                         </form>
-                        <button onClick={createBucket} className="btnFormAddCepa" id='aceptar'>firebase</button>
+
                     </div>
                 </div>
             </main>

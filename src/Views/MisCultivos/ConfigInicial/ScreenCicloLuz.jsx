@@ -11,6 +11,9 @@ import Swal from 'sweetalert2';
 import './configInicial.css';
 import luz from '../../../assets/Components/ConfigInitial/cicloIMG.png';
 
+import { getDatabase, ref, set, push } from 'firebase/database';
+
+
 function ScreenCicloLuzConfig() {
 
     const navigate = useNavigate();
@@ -18,6 +21,10 @@ function ScreenCicloLuzConfig() {
     const email = localStorage.getItem('email');
     const avatar = localStorage.getItem('avatar');
     const token = localStorage.getItem('token');
+
+
+    const uid = localStorage.getItem('uid');
+    const cultivo_id = localStorage.getItem('newCultivoId');
 
     // Definimos los estados para los valores seleccionados
     const [origen, setOrigen] = useState('');
@@ -49,7 +56,12 @@ function ScreenCicloLuzConfig() {
         submitBackend();
     };
 
-    const goToPh = () => {
+    const goToPhYes = () => {
+        setCicloLuz(uid, cultivo_id, true);
+        navigate('/Settings/Ph');
+    };
+    const goToPhNo = () => {
+        setCicloLuz(uid, cultivo_id, false);
         navigate('/Settings/Ph');
     };
 
@@ -69,6 +81,29 @@ function ScreenCicloLuzConfig() {
         });
     };
 
+    const setCicloLuz = (UID, CID, valor) => {
+
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+        // Referencia al nodo específico en la base de datos donde deseas escribir los datos
+        const LuzClicloRef = ref(db, 'BioharvestApp/Usuarios/' + UID +  '/Fotobiorreactores/'+ CID+'/Parameters/CicloDiaNoche');
+        // Datos que deseas almacenar en el nodo del cultivo
+        const LuzCicloData = {
+            CicloDiaNoche: valor
+        };
+
+        // Intentar establecer los datos en la base de datos
+        set(LuzClicloRef, valor)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+
+            //createFotoBiorreactor(UID, "sxnxj");
+    };
     return (
         <body className='bodyHome'>
             <nav className='navHome'>
@@ -95,8 +130,8 @@ function ScreenCicloLuzConfig() {
 
                         </div>
                         <div className="containerCicloBottomSettings">
-                        <button className="btnFormAddCepa" id='aceptar' onClick={goToPh}>Por ahora no</button>
-                            <button className="btnFormAddCepa" id='aceptar' onClick={goToPh}>Claro</button>
+                        <button className="btnFormAddCepa" id='aceptar' onClick={goToPhNo}>Por ahora no</button>
+                            <button className="btnFormAddCepa" id='aceptar' onClick={goToPhYes}>Claro</button>
                         </div>
                     </div>
                 </div>
