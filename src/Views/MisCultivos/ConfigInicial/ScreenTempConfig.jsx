@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 
 import './configInicial.css';
 import luz from '../../../assets/Components/ConfigInitial/cicloIMG.png';
+import { getDatabase, ref, set, push } from 'firebase/database';
 
 function ScreenConfigTemp() {
 
@@ -18,6 +19,8 @@ function ScreenConfigTemp() {
     const email = localStorage.getItem('email');
     const avatar = localStorage.getItem('avatar');
     const token = localStorage.getItem('token');
+    const uid = localStorage.getItem('uid');
+    const cultivo_id = localStorage.getItem('newCultivoId');
 
     // Definimos los estados para los valores seleccionados
     const [origen, setOrigen] = useState('');
@@ -49,7 +52,32 @@ function ScreenConfigTemp() {
         submitBackend();
     };
 
+    const setTempParameters = (UID, CID, valor) => {
+
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+        // Referencia al nodo específico en la base de datos donde deseas escribir los datos
+        const TempRef = ref(db, 'BioharvestApp/Usuarios/' + UID +  '/Fotobiorreactores/'+ CID+'/Parameters/Temperature');
+        // Datos que deseas almacenar en el nodo del cultivo
+        const TempData = {
+            Temperature: valor
+        };
+
+        // Intentar establecer los datos en la base de datos
+        set(TempRef, valor)
+            .then(() => {
+                console.log('Datos del cultivo escritos correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al escribir datos del cultivo:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+
+            //createFotoBiorreactor(UID, "sxnxj");
+    };
+
     const goToTemp = () => {
+        setTempParameters(uid, cultivo_id, valorTemp);
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',

@@ -9,8 +9,14 @@ import settingsIcon from '../../../assets/Components/Icons/ajustes.svg';
 import Swal from 'sweetalert2';
 import backenURL from '../../../backend';
 import axios from 'axios';
+import { getDatabase, ref, remove } from 'firebase/database';
 
 function TableCultivosEdit( {data}) {
+
+    const uid = localStorage.getItem('uid');
+const cultivo_id = localStorage.getItem('newCultivoId');
+
+
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
@@ -26,6 +32,22 @@ function TableCultivosEdit( {data}) {
         navigate('/AgregarCultivo');
     };
 
+    const deleteFirebaseCultivo = (UID, CID) => {
+        // Obtener una referencia a la base de datos de Firebase
+        const db = getDatabase();
+        // Referencia al nodo específico en la base de datos que deseas eliminar
+        const CultivoId = ref(db, `BioharvestApp/Usuarios/${UID}/Fotobiorreactores/${CID}`);
+    
+        // Intentar eliminar el dato de la base de datos
+        remove(CultivoId)
+            .then(() => {
+                console.log('Dato eliminado correctamente.');
+            })
+            .catch((error) => {
+                console.error('Error al eliminar el dato:', error);
+                // Manejar el error, puedes mostrar un mensaje al usuario o realizar otras acciones necesarias
+            });
+    };
 
     const solicitudDeleteBackend = async (id_cultivo) => {
         try {
@@ -85,6 +107,8 @@ function TableCultivosEdit( {data}) {
         }).then((result) => {
             if (result.isConfirmed) {
                 solicitudDeleteBackend(id);
+                deleteFirebaseCultivo(uid, id);
+
 
             }
         })
