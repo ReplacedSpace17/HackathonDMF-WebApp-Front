@@ -7,6 +7,11 @@ import Login from './Views/Login/Login'
 import video from './assets/Videos/videoLogin.mp4'
 import logo  from './assets/Logo.png'
 
+//-------------------------------assets
+import LogoHeader  from './assets/Pages/InitialPage/LogoHeader.png'
+import Image  from './assets/Pages/InitialPage/Image.png'
+
+
 function App() {
   
   const navigate = useNavigate();
@@ -18,19 +23,16 @@ function App() {
 
   return (
   <body className='bodyApp'>
-     <div className="container-Logo">
-      <img className='logoApp' src={logo}/>
-      <button className='buttonApp' onClick={handleClick}>Comenzar</button>
-     </div>
-      <div id="video-background">
-        
-        <video autoPlay loop muted className="video">
-          <source src={video} type="video/mp4" />
-        </video>
-      </div>
-      <div className="overlay"></div>
-     
-  
+   <div classname="containerLeft">
+    <h1>djndjndj</h1>
+   </div>
+   <div classname="containerRight">
+   </div>
+
+
+
+
+
   </body>
   
   )

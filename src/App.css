@@ -13,6 +13,13 @@ body {
   overflow: hidden;
   min-width: 700px;
 }
+
+.bodyApp{
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+
 .container-Logo{
 
   width: 100vw;
@@ -71,4 +78,11 @@ video {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.518);
   z-index: -1;
+}
+
+.containerLeft{
+  width: 50%;
+  height: 100%;
+  
+  background-color: red;
 }
